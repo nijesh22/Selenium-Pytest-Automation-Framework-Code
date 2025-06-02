@@ -1,7 +1,9 @@
-#pytest --browser=chrome --url=https://www.saucedemo.com --html=Reports/report.html --self-contained-html
+#pytest -s --browser=chrome --url=https://www.saucedemo.com --html=Reports/report.html --self-contained-html
+
 
 import os
 import base64
+import tempfile
 from datetime import datetime
 import pytest
 import pytest_html
@@ -21,8 +23,19 @@ driver = None
 def setup(request, browser, url):
     global driver
     if browser == "chrome":
+        chrome_opt = webdriver.ChromeOptions()
+        temp_profile_dir = tempfile.mkdtemp()
+        chrome_opt.add_argument(f"--user-data-dir={temp_profile_dir}")
+        prefs = {
+            "credentials_enable_service": False,
+            "profile.password_manager_enabled": False,
+            "profile.password_manager_leak_detection": False,  # "data breach" warning
+            "safeBrowse.enabled": False,
+            "autofill.enabled": False
+        }
+        chrome_opt.add_experimental_option("prefs", prefs)
         service = ChromeService(ChromeDriverManager().install())
-        driver = webdriver.Chrome(service=service)
+        driver = webdriver.Chrome(service=service, options=chrome_opt)
     elif browser == "firefox":
         service = FirefoxService(GeckoDriverManager().install())
         driver = webdriver.Firefox(service=service)
