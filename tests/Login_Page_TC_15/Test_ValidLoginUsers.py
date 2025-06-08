@@ -4,16 +4,28 @@ import pytest
 from selenium.webdriver.support.ui import WebDriverWait
 from Pages.LoginPage import LoginPage
 
+
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_validlogin:
 
-    @pytest.mark.parametrize("username, password", [
-        ("standard_user", "secret_sauce"),
-        ("problem_user", "secret_sauce"),
-        ("performance_glitch_user", "secret_sauce"),
-        ("error_user", "secret_sauce"),
-        ("visual_user", "secret_sauce")
-    ])
+    @pytest.mark.parametrize(
+        "username, password",
+        [
+            ("standard_user", "secret_sauce"),
+            ("problem_user", "secret_sauce"),
+            ("performance_glitch_user", "secret_sauce"),
+            ("error_user", "secret_sauce"),
+            ("visual_user", "secret_sauce"),
+        ],
+        ids=[
+            "standard_user",
+            "problem_user",
+            "performance_glitch_user",
+            "error_user",
+            "visual_user"
+        ]
+    )
     def test_loginisvalid(self, username, password):
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
