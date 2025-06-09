@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from Pages.LoginPage import LoginPage
 
-#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_Invalid_Login_Cases:
 

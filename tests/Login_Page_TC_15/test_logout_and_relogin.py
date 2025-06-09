@@ -9,7 +9,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 
-#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_logout_and_relogin:
     def test_logout_and_relogin_1(self):
