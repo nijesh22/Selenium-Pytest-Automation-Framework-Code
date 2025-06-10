@@ -1,5 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.select import Select
+
 
 class HomePage:
     def __init__(self,driver,wait):
@@ -35,3 +37,35 @@ class HomePage:
 
     def remove_backpack_from_cart(self):
         self.driver.find_element(By.ID, "remove-sauce-labs-backpack").click()
+
+    def get_product_info(self, product_element):
+        name = product_element.find_element(By.CLASS_NAME, "inventory_item_name").text
+        description = product_element.find_element(By.CLASS_NAME, "inventory_item_desc").text
+        price = product_element.find_element(By.CLASS_NAME, "inventory_item_price").text
+        button_text = product_element.find_element(By.TAG_NAME, "button").text
+
+        return {
+            "name": name,
+            "description": description,
+            "price": price,
+            "button": button_text
+        }
+
+    def Sauce_Labs_Backpack_Page_click(self):
+        self.driver.find_element(By.XPATH, "//div[normalize-space()='Sauce Labs Backpack']").click()
+
+    def Sauce_Labs_Backpack_Image_click(self):
+        image_locator = (By.XPATH, "//img[@alt='Sauce Labs Backpack']")
+        self.wait.until(EC.element_to_be_clickable(image_locator)).click()
+
+    def select_sort_option(self, visible_text):
+        dropdown = Select(self.driver.find_element(By.CLASS_NAME, "product_sort_container"))
+        dropdown.select_by_visible_text(visible_text)
+
+    def get_product_names(self):
+        name_elements = self.driver.find_elements(By.CLASS_NAME, "inventory_item_name")
+        return [name.text for name in name_elements]
+
+    def get_product_prices(self):
+        price_elements = self.driver.find_elements(By.CLASS_NAME, "inventory_item_price")
+        return [float(price.text.replace("$", "")) for price in price_elements]
