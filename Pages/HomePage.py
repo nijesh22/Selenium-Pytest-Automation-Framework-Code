@@ -69,3 +69,14 @@ class HomePage:
     def get_product_prices(self):
         price_elements = self.driver.find_elements(By.CLASS_NAME, "inventory_item_price")
         return [float(price.text.replace("$", "")) for price in price_elements]
+
+    def get_product_name_elements(self):
+        return self.driver.find_elements(By.CLASS_NAME, "inventory_item_name")
+
+    def get_product_images(self):
+        return self.driver.find_elements(By.XPATH, "//div[@class='inventory_item_img']//img")
+
+
+    def get_product_desc(self):
+
+        return self.driver.find_elements(By.CLASS_NAME, "inventory_item_desc")
