@@ -78,5 +78,26 @@ class HomePage:
 
 
     def get_product_desc(self):
-
         return self.driver.find_elements(By.CLASS_NAME, "inventory_item_desc")
+
+
+    def get_product_elements(self):
+        return self.driver.find_elements(By.CLASS_NAME, "inventory_item_name")
+
+    def click_product_by_index(self, index):
+        self.get_product_elements()[index].click()
+
+    def get_product_name_by_index(self, index):
+        return self.get_product_elements()[index].text
+
+    def get_product_price_elements(self):
+        return self.driver.find_elements(By.CLASS_NAME, "inventory_item_price")
+
+    def get_product_price_by_index(self, index):
+        return self.get_product_price_elements()[index].text
+
+    def get_product_desc_elements(self):
+        return self.driver.find_elements(By.CLASS_NAME, "inventory_item_desc")
+
+    def get_product_desc_by_index(self, index):
+        return self.get_product_desc_elements()[index].text
