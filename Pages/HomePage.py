@@ -101,3 +101,10 @@ class HomePage:
 
     def get_product_desc_by_index(self, index):
         return self.get_product_desc_elements()[index].text
+
+    def get_homepage_cart_icon_click(self):
+        cart_locator = (By.XPATH, "//a[@class='shopping_cart_link']")
+        self.wait.until(EC.element_to_be_clickable(cart_locator)).click()
+
+
+

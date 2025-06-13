@@ -26,3 +26,13 @@ class ProductDetailPage:
 
     def get_product_desc_text(self):
         return self.driver.find_element(By.CSS_SELECTOR, '[data-test="inventory-item-desc"]').text
+
+#-----------------------------------------------------------------------------
+    def get_product_details_name(self):
+        return self.driver.find_element(By.CLASS_NAME, "inventory_details_name").text
+
+    def get_product_details_desc(self):
+        return self.driver.find_element(By.CLASS_NAME, "inventory_details_desc").text
+
+    def get_product_details_price(self):
+        return self.driver.find_element(By.CLASS_NAME, "inventory_details_price").text
