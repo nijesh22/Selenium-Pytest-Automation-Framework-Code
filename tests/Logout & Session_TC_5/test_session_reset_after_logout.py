@@ -8,11 +8,13 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
+from conftest import driver
+
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_logout_from_burger_menu:
-    def test_logout_from_burger_menu_1(self):
+class Test_session_reset_after_logout:
+    def test_session_reset_after_logout_1(self):
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -32,4 +34,8 @@ class Test_logout_from_burger_menu:
 
         assert current_url == expected_url, f"❌ Expected: {expected_url}, but got: {current_url}"
 
+        self.driver.get("https://www.saucedemo.com/inventory.html")
 
+        assert login_page.get_session_error_message() == "Epic sadface: You can only access '/inventory.html' when you are logged in.", \
+            "❌ Session did not reset — was able to access inventory without being logged in"
+        print("✅ Session reset working as expected. Protected page can't be accessed after logout.")

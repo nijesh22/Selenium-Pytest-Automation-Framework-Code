@@ -29,6 +29,9 @@ class LoginPage():
 
         return self.driver.find_element("css selector", "h3[data-test='error']")
 
+    def get_session_error_message(self):
+        return self.driver.find_element(By.CSS_SELECTOR, "h3[data-test='error']").text
+
 
 
 

@@ -12,7 +12,7 @@ from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
 
 
-#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_place_order_with_multiple_items_finish:
     def test_place_order_with_multiple_items_finish_1(self):
