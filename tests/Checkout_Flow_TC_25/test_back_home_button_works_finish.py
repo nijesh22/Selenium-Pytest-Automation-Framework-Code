@@ -1,13 +1,10 @@
-import math
-import time
-from turtledemo.penrose import start
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
 
 from Pages.CartPage import CartPage
 from Pages.CheckOutOverview import CheckOutOverview
 from Pages.CheckOutPage import CheckoutPage
+from Pages.FinishPage import FinishPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
@@ -15,8 +12,8 @@ from Pages.ProductDetailPage import ProductDetailPage
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_cancel_brings_back_to_cart_overview:
-    def test_cancel_brings_back_to_cart_overview_1(self):
+class Test_back_home_button_works_finish:
+    def test_back_home_button_works_finish_1(self):
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -34,9 +31,10 @@ class Test_cancel_brings_back_to_cart_overview:
         checkout_page.first_last_zip_validation("manu", "ragav", "12345")
         checkout_page.click_continue()
 
+        finish_page = FinishPage(self.driver, wait)
+        finish_page.click_finish()
 
-        checkout_overview_page = CheckOutOverview(self.driver, wait)
-        checkout_overview_page.click_cancel()
+        finish_page.click_back_home_button()
 
         current_url = self.driver.current_url
         expected_url = "https://www.saucedemo.com/inventory.html"

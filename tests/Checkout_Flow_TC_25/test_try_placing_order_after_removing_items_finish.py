@@ -1,6 +1,4 @@
-import math
 import time
-from turtledemo.penrose import start
 
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
@@ -8,22 +6,22 @@ from selenium.webdriver.support.wait import WebDriverWait
 from Pages.CartPage import CartPage
 from Pages.CheckOutOverview import CheckOutOverview
 from Pages.CheckOutPage import CheckoutPage
+from Pages.FinishPage import FinishPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_cancel_brings_back_to_cart_overview:
-    def test_cancel_brings_back_to_cart_overview_1(self):
+class Test_place_order_with_multiple_items_finish:
+    def test_place_order_with_multiple_items_finish_1(self):
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
         login_page.swag_labs_login_button()
 
         home_page = HomePage(self.driver, wait)
-        home_page.add_backpack_to_cart()
         home_page.Sauce_Labs_Backpack_Image_click()
 
         home_page.get_homepage_cart_icon_click()
@@ -35,15 +33,7 @@ class Test_cancel_brings_back_to_cart_overview:
         checkout_page.click_continue()
 
 
-        checkout_overview_page = CheckOutOverview(self.driver, wait)
-        checkout_overview_page.click_cancel()
+        finish_page = FinishPage(self.driver, wait)
+        finish_page.click_finish()
 
-        current_url = self.driver.current_url
-        expected_url = "https://www.saucedemo.com/inventory.html"
-
-        if current_url == expected_url:
-            print(f"✅ Correct URL: {current_url}")
-        else:
-            print(f"❌  Incorrect URL: {expected_url}, but got: {current_url}")
-
-        assert current_url == expected_url, f"❌ URL: Expected: {expected_url}, but got: {current_url}"
+        assert not finish_page.is_on_checkout_complete(), "❌ Bug Found : Order completed without adding any products in cart!"

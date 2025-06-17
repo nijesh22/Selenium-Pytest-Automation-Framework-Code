@@ -28,7 +28,6 @@ class CheckoutPage:
         zip.send_keys(zip_step_one_page)
 
     def fname_lname_zipcode_error_message(self):
-
         return self.driver.find_element(By.CSS_SELECTOR, '[data-test="error"]')
 
     def cancel(self):
