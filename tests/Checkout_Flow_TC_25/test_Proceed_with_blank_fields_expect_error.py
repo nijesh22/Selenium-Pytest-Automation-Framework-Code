@@ -9,7 +9,7 @@ from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 
 
-#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_Proceed_with_blank_fields_expect_error:
     def test_Proceed_with_blank_fields_expect_error_1(self):

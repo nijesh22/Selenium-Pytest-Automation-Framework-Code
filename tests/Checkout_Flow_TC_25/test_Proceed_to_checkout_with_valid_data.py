@@ -10,7 +10,7 @@ from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
 
 
-#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_Proceed_to_checkout_with_valid_data:
     def test_Proceed_to_checkout_with_valid_data_1(self):

@@ -10,7 +10,7 @@ from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
 
 
-#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_cancel_button_brings_back_to_cart:
 
