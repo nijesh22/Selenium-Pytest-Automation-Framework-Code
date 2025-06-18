@@ -31,3 +31,6 @@ class CartPage:
 
     def cart_is_empty_or_not_cart_page_element(self):
         return self.driver.find_elements(By.CLASS_NAME, "cart_item")
+
+    def change_cart_price_from_DOM(self):
+        self.driver.execute_script("document.querySelector('.inventory_item_price').textContent = '$10000.00';")
