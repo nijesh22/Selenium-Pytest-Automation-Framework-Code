@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 
-#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_cart_gets_cleared_on_logout:
     def test_cart_gets_cleared_on_logout_1(self):

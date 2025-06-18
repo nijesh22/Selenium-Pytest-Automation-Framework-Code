@@ -106,5 +106,29 @@ class HomePage:
         cart_locator = (By.XPATH, "//a[@class='shopping_cart_link']")
         self.wait.until(EC.element_to_be_clickable(cart_locator)).click()
 
+    def side_menu_about_button(self):
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, "//a[@id='about_sidebar_link']"))).click()
 
+    def side_menu_Alliteams_button(self):
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, "//a[@id='inventory_sidebar_link']"))).click()
 
+    def side_menu_close_button(self):
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@id='react-burger-cross-btn']"))).click()
+
+    def twitter_footer(self):
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, "//a[normalize-space()='Twitter']"))).click()
+
+    def facebook_footer(self):
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, "//a[normalize-space()='Facebook']"))).click()
+
+    def linkedin_footer(self):
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, "//a[normalize-space()='LinkedIn']"))).click()
+
+    def footer_text(self):
+        return self.driver.find_element(By.XPATH, "//div[@class='footer_copy']").text
+
+    def is_burger_menu_visible(self):
+        return self.driver.find_element(By.ID, "react-burger-menu-btn").is_displayed()
+
+    def resize_window(self, width, height):
+        self.driver.set_window_size(width, height)
