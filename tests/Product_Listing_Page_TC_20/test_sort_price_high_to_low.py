@@ -2,11 +2,14 @@ import pytest
 from selenium.webdriver.support.ui import WebDriverWait
 from Pages.LoginPage import LoginPage
 from Pages.HomePage import HomePage
+from Utilities.utils import Utils
+
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestSortByPriceHighToLow:
     def test_sort_price_high_to_low(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
 
         login_page = LoginPage(self.driver, wait)
@@ -20,4 +23,4 @@ class TestSortByPriceHighToLow:
         expected_sorted_prices = sorted(ui_prices , reverse= True)
 
         assert ui_prices == expected_sorted_prices, f"❌ Prices not sorted high to low. Got: {ui_prices}"
-        print("✅ Product prices are sorted high to low correctly.")
+        log.info("✅ Product prices are sorted high to low correctly.")

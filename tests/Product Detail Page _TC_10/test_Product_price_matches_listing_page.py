@@ -4,12 +4,14 @@ from selenium.webdriver.support.wait import WebDriverWait
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
+from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_Product_price_matches_listing:
     def test_Product_price_matches_listing_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -27,6 +29,6 @@ class Test_Product_price_matches_listing:
             product_price_details_page = product_detail_page.get_product_price()
 
             assert product_price == product_price_details_page, f"❌ Mismatch! Expected: {product_price}, Got: {product_price_details_page}"
-            print(f"✅ {product_price} Both Prices are Correctly Displayed.")
+            log.info(f"✅ {product_price} Both Prices are Correctly Displayed.")
 
             self.driver.back()

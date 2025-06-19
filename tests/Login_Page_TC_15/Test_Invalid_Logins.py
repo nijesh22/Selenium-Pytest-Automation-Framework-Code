@@ -4,6 +4,8 @@ import pytest
 from selenium.webdriver.support.wait import WebDriverWait
 
 from Pages.LoginPage import LoginPage
+from Utilities.utils import Utils
+
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
@@ -22,6 +24,7 @@ class Test_Invalid_Login_Cases:
     )
 
     def test_Invalid_Login_Cases_1(self, username, password):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid(username, password)
@@ -36,6 +39,6 @@ class Test_Invalid_Login_Cases:
 
         # Assertion
         assert error_text == expected_error, f"❌ Expected error: '{expected_error}', but got: '{error_text}'"
-        print("✅ invalid username & invalid password correct error message is displayed")
+        log.info("✅ invalid username & invalid password correct error message is displayed")
 
 

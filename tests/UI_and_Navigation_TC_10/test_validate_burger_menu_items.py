@@ -3,11 +3,14 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
+from Utilities.utils import Utils
+
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_validate_burger_menu_items:
     def test_validate_burger_menu_items_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -21,9 +24,9 @@ class Test_validate_burger_menu_items:
         expected_url = "https://saucelabs.com/"
 
         if current_url == expected_url:
-            print(f"✅ Correct Sauce Labs URL: {current_url}")
+            log.info(f"✅ Correct Sauce Labs URL: {current_url}")
         else:
-            print(f"❌ Incorrect Sauce Labs URL! Expected: {expected_url}, but got: {current_url}")
+            log.error(f"❌ Incorrect Sauce Labs URL! Expected: {expected_url}, but got: {current_url}")
 
         assert current_url == expected_url, f"❌ URL Expected: {expected_url}, but got: {current_url}"
 
@@ -36,9 +39,9 @@ class Test_validate_burger_menu_items:
         expected_url = "https://www.saucedemo.com/inventory.html"
 
         if current_url == expected_url:
-            print(f"✅ Correct inventory URL: {current_url}")
+            log.info(f"✅ Correct inventory URL: {current_url}")
         else:
-            print(f"❌ Incorrect inventory URL! Expected: {expected_url}, but got: {current_url}")
+            log.error(f"❌ Incorrect inventory URL! Expected: {expected_url}, but got: {current_url}")
 
         assert current_url == expected_url, f"❌ URL Expected: {expected_url}, but got: {current_url}"
 
@@ -48,9 +51,9 @@ class Test_validate_burger_menu_items:
         expected_url = "https://www.saucedemo.com/"
 
         if current_url == expected_url:
-            print(f"✅ Correct login URL: {current_url}")
+            log.info(f"✅ Correct login URL: {current_url}")
         else:
-            print(f"❌ Correct login URL! Expected: {expected_url}, but got: {current_url}")
+            log.error(f"❌ Correct login URL! Expected: {expected_url}, but got: {current_url}")
 
         assert current_url == expected_url, f"❌ URL Expected: {expected_url}, but got: {current_url}"
 

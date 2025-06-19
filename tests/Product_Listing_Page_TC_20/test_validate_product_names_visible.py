@@ -2,11 +2,14 @@ import pytest
 from selenium.webdriver.support.ui import WebDriverWait
 from Pages.LoginPage import LoginPage
 from Pages.HomePage import HomePage
+from Utilities.utils import Utils
+
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestValidateProductNamesVisible:
     def testValidateProductNamesVisible_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
 
         login_page = LoginPage(self.driver, wait)
@@ -18,4 +21,4 @@ class TestValidateProductNamesVisible:
 
         for product_element in product_names:
             assert product_element.is_displayed(), f"❌ Product '{product_element.text}' is not visible!"
-            print(f"✅ Product visible: {product_element.text}")
+            log.info(f"✅ Product visible: {product_element.text}")

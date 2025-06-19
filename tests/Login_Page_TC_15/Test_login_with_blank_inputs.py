@@ -1,6 +1,8 @@
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
 from Pages.LoginPage import LoginPage
+from Utilities.utils import Utils
+
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
@@ -24,6 +26,7 @@ class TestLoginWithBlankInputs:
         ]
     )
     def test_login_with_blank_inputs_1(self, username, password, expected_error):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
 
@@ -35,5 +38,5 @@ class TestLoginWithBlankInputs:
 
         # Assertion
         assert error_text == expected_error, f"❌ Expected: '{expected_error}', but got: '{error_text}'"
-        print(f"✅ Correct error message displayed: {error_text}")
+        log.info(f"✅ Correct error message displayed: {error_text}")
 

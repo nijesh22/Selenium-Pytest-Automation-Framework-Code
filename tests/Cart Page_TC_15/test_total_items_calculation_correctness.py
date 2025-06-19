@@ -8,12 +8,14 @@ from Pages.CartPage import CartPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
+from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_total_items_calculation_correctness:
     def test_total_items_calculation_correctness_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -25,7 +27,7 @@ class Test_total_items_calculation_correctness:
         cart_count = home_page.get_cart_badge_count()
 
         assert cart_count == '2', f"❌ Expected cart badge to show '2', but got '{cart_count}'"
-        print("✅ Cart badge correctly shows 2 items.")
+        log.info("✅ Cart badge correctly shows 2 items.")
 
         home_page.get_homepage_cart_icon_click()
 
@@ -42,7 +44,7 @@ class Test_total_items_calculation_correctness:
 
 
         assert cart_count_after_removal == total_quantity, f"❌ Didn't Get the Expected Result, but got '{cart_count_after_removal}'"
-        print(f"✅ Quantity is Correctly Displayed : {total_quantity} items")
+        log.info(f"✅ Quantity is Correctly Displayed : {total_quantity} items")
 
 
 

@@ -8,12 +8,14 @@ from Pages.FinishPage import FinishPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
+from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_click_finish_and_validate_success_finish:
     def test_click_finish_and_validate_success_finish_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -38,5 +40,5 @@ class Test_click_finish_and_validate_success_finish:
         expected_success_message = "Thank you for your order!"
 
         assert current_success_message == expected_success_message, f"❌ Expected: '{expected_success_message}', but got: '{current_success_message}'"
-        print(f"✅ Correct order successful message displayed: {current_success_message}")
+        log.info(f"✅ Correct order successful message displayed: {current_success_message}")
 

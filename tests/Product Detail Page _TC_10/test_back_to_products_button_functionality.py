@@ -6,12 +6,14 @@ from selenium.webdriver.support.wait import WebDriverWait
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
+from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_Add_product_to_cart_from_detail_page:
     def test_Add_product_to_cart_from_detail_page_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -24,9 +26,9 @@ class Test_Add_product_to_cart_from_detail_page:
         expected_url = "https://www.saucedemo.com/inventory-item.html?id=4"
 
         if current_url == expected_url:
-            print(f"✅ Correct URL: {current_url}")
+            log.info(f"✅ Correct URL: {current_url}")
         else:
-            print(f"❌ Incorrect URL! Expected: {expected_url}, but got: {current_url}")
+            log.error(f"❌ Incorrect URL! Expected: {expected_url}, but got: {current_url}")
 
         assert current_url == expected_url, f"❌ Expected: {expected_url}, but got: {current_url}"
 
@@ -37,8 +39,8 @@ class Test_Add_product_to_cart_from_detail_page:
         expected_url = "https://www.saucedemo.com/inventory.html"
 
         if current_url == expected_url:
-            print(f"✅ Correct URL: {current_url}")
+            log.info(f"✅ Correct URL: {current_url}")
         else:
-            print(f"❌ Incorrect URL! Expected: {expected_url}, but got: {current_url}")
+            log.error(f"❌ Incorrect URL! Expected: {expected_url}, but got: {current_url}")
 
         assert current_url == expected_url, f"❌ Expected: {expected_url}, but got: {current_url}"

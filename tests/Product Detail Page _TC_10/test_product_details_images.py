@@ -6,12 +6,14 @@ from selenium.webdriver.support.wait import WebDriverWait
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
+from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_product_details_images:
     def test_product_details_images_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -33,6 +35,6 @@ class Test_product_details_images:
                     "return arguments[0].complete && arguments[0].naturalWidth > 0", img
                 )
                 assert is_loaded, f"❌ Product image failed to load: {img.get_attribute('src')}"
-                print(f"✅ Image loaded correctly: {img.get_attribute('alt')}")
+                log.info(f"✅ Image loaded correctly: {img.get_attribute('alt')}")
 
                 self.driver.back()

@@ -4,12 +4,14 @@ from selenium.webdriver.support.wait import WebDriverWait
 from Pages.CartPage import CartPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
+from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_continue_shopping_button_works:
     def test_continue_shopping_button_works_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -22,4 +24,4 @@ class Test_continue_shopping_button_works:
 
         cart_items = Cart_page.cart_is_empty_or_not_cart_page_element()
         assert len(cart_items) == 0, "❌ Cart is not empty!"
-        print("✅ Cart is empty.")
+        log.info("✅ Cart is empty.")

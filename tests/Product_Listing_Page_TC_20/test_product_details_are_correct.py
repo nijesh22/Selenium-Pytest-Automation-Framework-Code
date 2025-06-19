@@ -5,11 +5,14 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
+from Utilities.utils import Utils
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_product_details_are_correct:
     def test_product_details_are_correct_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -23,11 +26,11 @@ class Test_product_details_are_correct:
         for index, product in enumerate(products):
             info = home_page.get_product_info(product)
 
-            print(f"\n🛍️ Checking Product #{index + 1}")
-            print("✅ Name:", info['name'])
-            print("✅ Description:", info['description'])
-            print("✅ Price:", info['price'])
-            print("✅ Button Text:", info['button'])
+            log.info(f"\n🛍️ Checking Product #{index + 1}")
+            log.info(f"✅ Name: {info['name']}")
+            log.info(f"✅ Description: {info['description']}")
+            log.info(f"✅ Price: {info['price']}")
+            log.info(f"✅ Button Text: {info['button']}")
 
             assert info['name'], f"❌ Product {index + 1} name is empty!"
             assert info['description'], f"❌ Product {index + 1} description is missing!"

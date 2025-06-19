@@ -3,12 +3,14 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
+from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_continue_shopping_button_works:
     def test_continue_shopping_button_works_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -21,9 +23,9 @@ class Test_continue_shopping_button_works:
         expected_url = "https://www.saucedemo.com/cart.html"
 
         if current_url == expected_url:
-            print(f"✅ Correct URL: {current_url}")
+            log.info(f"✅ Correct URL: {current_url}")
         else:
-            print(f"❌ Incorrect URL! Expected: {expected_url}, but got: {current_url}")
+            log.error(f"❌ Incorrect URL! Expected: {expected_url}, but got: {current_url}")
 
         assert current_url == expected_url, f"❌ Expected: {expected_url}, but got: {current_url}"
 

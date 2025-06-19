@@ -2,11 +2,14 @@ import pytest
 from selenium.webdriver.support.ui import WebDriverWait
 from Pages.LoginPage import LoginPage
 from Pages.HomePage import HomePage
+from Utilities.utils import Utils
+
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestSortByName:
     def test_sort_name_a_to_z(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
 
 
@@ -21,4 +24,4 @@ class TestSortByName:
         sorted_names = sorted(ui_product_names)
 
         assert ui_product_names == sorted_names, f"❌ Names not sorted A-Z. Got: {ui_product_names}"
-        print("✅ Product names are sorted A-Z correctly.")
+        log.info("✅ Product names are sorted A-Z correctly.")

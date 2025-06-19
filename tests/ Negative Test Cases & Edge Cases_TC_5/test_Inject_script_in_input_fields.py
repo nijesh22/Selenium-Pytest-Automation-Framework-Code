@@ -1,3 +1,4 @@
+import logging
 import time
 from selenium.webdriver.support import expected_conditions as EC
 import pytest
@@ -7,11 +8,14 @@ from Pages.CartPage import CartPage
 from Pages.CheckOutPage import CheckoutPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
+from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_Inject_script_in_input_fields:
+
     def test_Inject_script_in_input_fields_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -34,4 +38,4 @@ class Test_Inject_script_in_input_fields:
             WebDriverWait(self.driver, 2).until(EC.alert_is_present())
             assert False, "❌ XSS Vulnerability Detected! Alert appeared."
         except:
-            print("✅ No alert — form is secure from script injection.")
+            log.info("✅ No alert — form is secure from script injection.")

@@ -10,12 +10,14 @@ from Pages.CheckOutPage import CheckoutPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
+from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class test_verify_product_list_matches_cart_overview:
     def test_verify_product_list_matches_cart_overview_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -45,11 +47,11 @@ class test_verify_product_list_matches_cart_overview:
         price = checkout_overview_page.get_overview_product_price()
 
         assert product_details_name == name, f"❌ Mismatch! Expected: {product_details_name}, Got: {name}"
-        print(f"✅ {name} ✅ name correctly displayed.")
+        log.info(f"✅ {name} ✅ name correctly displayed.")
 
         assert product_details_desc == desc, f"❌ Mismatch! Expected: {product_details_desc}, Got: {desc}"
-        print(f"✅ {desc} ✅ desc correctly displayed.")
+        log.info(f"✅ {desc} ✅ desc correctly displayed.")
 
         assert product_details_price == price, f"❌ Mismatch! Expected: {product_details_price}, Got: {price}"
-        print(f"✅ {price} ✅ price correctly displayed.")
+        log.info(f"✅ {price} ✅ price correctly displayed.")
 

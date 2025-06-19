@@ -1,10 +1,9 @@
 import time
 from asyncio import wait_for
-
 from selenium.webdriver.common.by import By
 
+from Utilities.utils import Utils
 from conftest import driver
-
 
 class LoginPage():
     def __init__(self,driver,wait):

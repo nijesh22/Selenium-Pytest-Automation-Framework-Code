@@ -1,3 +1,4 @@
+import logging
 import time
 
 import pytest
@@ -8,11 +9,13 @@ from Pages.CheckOutOverview import CheckOutOverview
 from Pages.CheckOutPage import CheckoutPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
+from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_manipulate_item_price_in_DOM:
     def test_manipulate_item_price_in_DOM_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -35,5 +38,5 @@ class Test_manipulate_item_price_in_DOM:
         price = checkout_overview_page.get_overview_product_price()
 
         assert price == '$29.99', f"❌ Price Mismatch After DOM Manupilation! Expected: {price}"
-        print(f"✅ {price} Price correctly displayed.")
+        log.info(f"✅ {price} Price correctly displayed.")
 

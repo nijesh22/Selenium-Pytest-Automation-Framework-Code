@@ -2,11 +2,14 @@ import pytest
 from selenium.webdriver.support.ui import WebDriverWait
 from Pages.LoginPage import LoginPage
 from Pages.HomePage import HomePage
+from Utilities.utils import Utils
+
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestAddRemoveAfterSorting:
     def test_AddRemove_after_sorting(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
 
         login_page = LoginPage(self.driver, wait)
@@ -18,7 +21,7 @@ class TestAddRemoveAfterSorting:
 
         for idx, element in enumerate(descriptions , start= 1):
             description_text = element.text.strip()
-            print(f"Description {idx}: '{description_text}'")
+            log.info(f"Description {idx}: '{description_text}'")
             assert description_text != "", f"❌ Description at index {idx} is empty!"
 
 

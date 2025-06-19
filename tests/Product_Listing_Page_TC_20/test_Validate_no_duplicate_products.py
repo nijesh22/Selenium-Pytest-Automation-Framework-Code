@@ -2,12 +2,14 @@ import pytest
 from selenium.webdriver.support.ui import WebDriverWait
 from Pages.LoginPage import LoginPage
 from Pages.HomePage import HomePage
+from Utilities.utils import Utils
+
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestValidateNoDuplicateProducts:
     def testValidateNoDuplicateProducts_1(self):
-
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
 
         login_page = LoginPage(self.driver, wait)
@@ -21,4 +23,4 @@ class TestValidateNoDuplicateProducts:
 
         assert len(product_names) == len(product_names_set), "❌ Duplicate product names found!"
 
-        print("✅ No duplicate products found.")
+        log.info("✅ No duplicate products found.")

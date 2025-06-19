@@ -4,11 +4,14 @@ import pytest
 from selenium.webdriver.support.wait import WebDriverWait
 
 from Pages.LoginPage import LoginPage
+from Utilities.utils import Utils
+
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_Locked_Out_User_Login:
     def test_Locked_Out_User_Login_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("locked_out_user", "secret_sauce")
@@ -23,4 +26,4 @@ class Test_Locked_Out_User_Login:
 
         # Assertion
         assert error_text == expected_error, f"❌ Expected error: '{expected_error}', but got: '{error_text}'"
-        print("✅ Locked out user error message is correct.")
+        log.info("✅ Locked out user error message is correct.")

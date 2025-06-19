@@ -16,6 +16,8 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.edge.service import Service as EdgeService
 
+from Utilities.utils import Utils
+
 driver = None
 
 
@@ -67,6 +69,7 @@ def url(request):
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item):
+    log = Utils.customlogger()
     pytest_html = item.config.pluginmanager.getplugin('html')
     outcome = yield
     report = outcome.get_result()
@@ -86,9 +89,9 @@ def pytest_runtest_makereport(item):
             driver = getattr(item.cls, "driver", None)
             if driver:
                 try:
-                    print(f"Capturing screenshot at: {file_path}")
+                    log.info(f"Capturing screenshot at: {file_path}")
                     driver.get_screenshot_as_file(file_path)
-                    print(f"Screenshot saved to: {file_path}")
+                    log.info(f"Screenshot saved to: {file_path}")
 
                     if os.path.exists(file_path):
                         with open(file_path, "rb") as f:
@@ -104,14 +107,16 @@ def pytest_runtest_makereport(item):
                         </div>'''
 
                         extra.append(extras.html(html))
-                        print(f"Screenshot embedded in HTML report")
+                        log.info(f"Screenshot embedded in HTML report")
 
                 except Exception as e:
-                    print(f"Error capturing screenshot: {e}")
+                    log.error(f"Error capturing screenshot: {e}")
 
                     extra.append(extras.html(f'<div style="color: red;">Failed to capture screenshot: {str(e)}</div>'))
             else:
-                print("Driver not available to capture screenshot.")
+                log.error("Driver not available to capture screenshot.")
                 extra.append(extras.html('<div style="color: orange;">Driver not available for screenshot</div>'))
 
     report.extras = extra
+
+

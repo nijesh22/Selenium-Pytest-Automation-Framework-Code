@@ -11,12 +11,14 @@ from Pages.CheckOutPage import CheckoutPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
+from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_validate_total_is_correct_item_tax:
     def test_validate_total_is_correct_item_tax_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -46,4 +48,4 @@ class Test_validate_total_is_correct_item_tax:
             f"❌ Total mismatch! Expected: {expected_total}, Found: {total_ui}"
         )
 
-        print("✅ Total is correct (Item Total + Tax).")
+        log.info("✅ Total is correct (Item Total + Tax).")

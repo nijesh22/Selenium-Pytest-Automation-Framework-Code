@@ -5,11 +5,14 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
+from Utilities.utils import Utils
+
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_cart_gets_cleared_on_logout:
     def test_cart_gets_cleared_on_logout_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -18,12 +21,12 @@ class Test_cart_gets_cleared_on_logout:
         home_page = HomePage(self.driver, wait)
         home_page.add_backpack_to_cart()
 
-        time.sleep(3)
+        time.sleep(1)
 
         cart_count = home_page.get_cart_badge_count()
 
         assert cart_count == '1', f"❌ Expected cart badge to show '1', but got '{cart_count}'"
-        print("✅ Cart badge correctly shows 1 item.")
+        log.info("✅ Cart badge correctly shows 1 item.")
 
         home_page.click_menu()
         home_page.click_logout()
@@ -34,4 +37,4 @@ class Test_cart_gets_cleared_on_logout:
         cart_count_latest = home_page.get_cart_badge_count()
 
         assert not cart_count_latest == '1', f"❌ Expected cart to be empty after re-login, but found '{cart_count_latest}' item(s)"
-        print("✅ Cart is empty after re-login. Session reset is working correctly.")
+        log.info("✅ Cart is empty after re-login. Session reset is working correctly.")

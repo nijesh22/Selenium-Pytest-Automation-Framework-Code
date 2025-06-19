@@ -6,12 +6,14 @@ from selenium.webdriver.support.wait import WebDriverWait
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
+from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_Product_description_matching:
     def test_Product_description_matching_1(self):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -29,6 +31,6 @@ class Test_Product_description_matching:
             product_desc_details_page = product_detail_page.get_product_desc_text()
 
             assert product_desc == product_desc_details_page, f"❌ Mismatch! Expected: {product_desc}, Got: {product_desc_details_page}"
-            print(f"✅ {product_desc} ✅ Both description are Correctly Displayed.")
+            log.info(f"✅ {product_desc} ✅ Both description are Correctly Displayed.")
 
             self.driver.back()

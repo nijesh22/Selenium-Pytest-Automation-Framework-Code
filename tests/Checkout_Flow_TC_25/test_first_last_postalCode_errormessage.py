@@ -8,6 +8,7 @@ from Pages.CheckOutPage import CheckoutPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
+from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
@@ -35,6 +36,7 @@ class Test_first_last_postalCode_errormessage:
     )
 
     def test_first_last_postalCode_errormessage_1(self,fname,lname,zipcode,expected_error):
+        log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
@@ -60,7 +62,7 @@ class Test_first_last_postalCode_errormessage:
 
         # Assertion
         assert error_text == expected_error, f"❌ Expected: '{expected_error}', but got: '{error_text}'"
-        print(f"✅ Correct error message displayed: {error_text}")
+        log.info(f"✅ Correct error message displayed: {error_text}")
 
 
 
