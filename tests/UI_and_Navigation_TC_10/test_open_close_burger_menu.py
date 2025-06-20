@@ -6,8 +6,8 @@ from Pages.LoginPage import LoginPage
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_open_close_burger_menu:
-    def test_open_close_burger_menu_1(self):
+class TestOpenCloseBurgerMenu:
+    def test_open_close_burger_menu(self):
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")

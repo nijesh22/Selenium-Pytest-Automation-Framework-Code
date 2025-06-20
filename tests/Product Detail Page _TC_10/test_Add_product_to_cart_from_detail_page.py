@@ -1,8 +1,5 @@
-import time
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
@@ -11,8 +8,8 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_Add_product_to_cart_from_detail_page:
-    def test_Add_product_to_cart_from_detail_page_1(self):
+class TestAddProductToCartFromDetailPage:
+    def test_add_product_to_cart_from_detail_page(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

@@ -1,8 +1,6 @@
 import time
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
@@ -11,8 +9,8 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_product_details_images:
-    def test_product_details_images_1(self):
+class TestProductDetailsImages:
+    def test_product_details_images(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

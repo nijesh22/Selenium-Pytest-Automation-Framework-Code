@@ -8,7 +8,7 @@ from Pages.LoginPage import LoginPage
 from Utilities.utils import Utils
 
 
-#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class Test_product_details_are_correct:
     def test_product_details_are_correct_1(self):

@@ -1,8 +1,5 @@
-import time
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.CartPage import CartPage
 from Pages.CheckOutPage import CheckoutPage
 from Pages.HomePage import HomePage
@@ -13,7 +10,7 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_first_last_postalCode_errormessage:
+class TestFirstLastPostalCodeErrorMessage:
 
     @pytest.mark.parametrize(
         "fname, lname, zipcode,expected_error",
@@ -35,7 +32,7 @@ class Test_first_last_postalCode_errormessage:
         ]
     )
 
-    def test_first_last_postalCode_errormessage_1(self,fname,lname,zipcode,expected_error):
+    def test_first_last_postalcode_error_message(self,fname,lname,zipcode,expected_error):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

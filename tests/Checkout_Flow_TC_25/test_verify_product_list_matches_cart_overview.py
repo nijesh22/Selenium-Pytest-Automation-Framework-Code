@@ -1,9 +1,5 @@
-import time
-from turtledemo.penrose import start
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.CartPage import CartPage
 from Pages.CheckOutOverview import CheckOutOverview
 from Pages.CheckOutPage import CheckoutPage
@@ -15,8 +11,8 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class test_verify_product_list_matches_cart_overview:
-    def test_verify_product_list_matches_cart_overview_1(self):
+class TestVerifyProductListMatchesCartOverview:
+    def test_verify_product_list_matches_cart_overview(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

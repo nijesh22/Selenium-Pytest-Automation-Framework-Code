@@ -1,22 +1,17 @@
-import time
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.CartPage import CartPage
-from Pages.CheckOutOverview import CheckOutOverview
 from Pages.CheckOutPage import CheckoutPage
 from Pages.FinishPage import FinishPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
-from Pages.ProductDetailPage import ProductDetailPage
 from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_place_order_with_multiple_items_finish:
-    def test_place_order_with_multiple_items_finish_1(self):
+class TestPlaceOrderWithMultipleItemsFinish:
+    def test_place_order_with_multiple_items_finish(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

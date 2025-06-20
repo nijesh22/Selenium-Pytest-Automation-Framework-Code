@@ -1,20 +1,15 @@
-import time
-from turtledemo.penrose import start
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.CartPage import CartPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
-from Pages.ProductDetailPage import ProductDetailPage
 from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_Remove_product_from_cart:
-    def test_Remove_product_from_cart_1(self):
+class TestRemoveProductFromCart:
+    def test_remove_product_from_cart(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

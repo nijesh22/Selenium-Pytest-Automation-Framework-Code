@@ -1,23 +1,17 @@
-import math
-import time
-from turtledemo.penrose import start
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.CartPage import CartPage
 from Pages.CheckOutOverview import CheckOutOverview
 from Pages.CheckOutPage import CheckoutPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
-from Pages.ProductDetailPage import ProductDetailPage
 from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_cancel_brings_back_to_cart_overview:
-    def test_cancel_brings_back_to_cart_overview_1(self):
+class TestCancelBringsBackToCartOverview:
+    def test_cancel_brings_back_to_cart_overview(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

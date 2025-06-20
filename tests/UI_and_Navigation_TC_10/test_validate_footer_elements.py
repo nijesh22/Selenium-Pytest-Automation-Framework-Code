@@ -1,8 +1,5 @@
-import time
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Utilities.utils import Utils
@@ -10,8 +7,8 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_validate_footer_elements:
-    def test_validate_footer_elements_1(self):
+class TestValidateFooterElements:
+    def test_validate_footer_elements(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
@@ -70,5 +67,5 @@ class Test_validate_footer_elements:
         footer_text = home_page.footer_text()
 
         assert footer_text == '© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy', f"❌ Expected  to show ' © 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy ', but got '{footer_text}'"
-        log.info("✅ shows the correct footer Text Verification succesful.")
+        log.info("✅ shows the correct footer Text Verification successful.")
 

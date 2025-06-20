@@ -1,12 +1,8 @@
 #pytest -s --browser=chrome --url=https://www.saucedemo.com --html=Reports/report.html --self-contained-html
-
-
 import os
 import base64
 import tempfile
-from datetime import datetime
 import pytest
-import pytest_html
 from pytest_html import extras
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -15,11 +11,9 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.edge.service import Service as EdgeService
-
 from Utilities.utils import Utils
 
 driver = None
-
 
 @pytest.fixture(autouse=True)
 def setup(request, browser, url):

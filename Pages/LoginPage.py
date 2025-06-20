@@ -1,35 +1,40 @@
-import time
-from asyncio import wait_for
 from selenium.webdriver.common.by import By
-
-from Utilities.utils import Utils
-from conftest import driver
 
 class LoginPage():
     def __init__(self,driver,wait):
         self.driver = driver
         self.wait = wait
 
+    # ---------- Locators ----------
+
+    _username_input = (By.ID, "user-name")
+    _password_input = (By.ID, "password")
+    _login_button = (By.ID, "login-button")
+    _error_message = (By.CSS_SELECTOR, "h3[data-test='error']")
+
+    # ---------- Actions ----------
+
     def swag_labs_loginIsvalid(self , standard_user_login,standard_user_login_password):
         #valid ID
-        user_name_valid = self.driver.find_element(By.ID, "user-name")
+        user_name_valid = self.driver.find_element(*self._username_input)
         user_name_valid.send_keys(standard_user_login)
 
         #valid Pass
-        password_valid = self.driver.find_element(By.ID, "password")
+        password_valid = self.driver.find_element(*self._password_input)
         password_valid.send_keys(standard_user_login_password)
 
     def swag_labs_login_button(self):
         # login button
-        login_button = self.driver.find_element(By.ID, "login-button")
+        login_button = self.driver.find_element(*self._login_button)
         login_button.click()
 
-    def login_error_message(self):
+    # ---------- Getters ----------
 
-        return self.driver.find_element("css selector", "h3[data-test='error']")
+    def login_error_message(self):
+        return self.driver.find_element(*self._error_message)
 
     def get_session_error_message(self):
-        return self.driver.find_element(By.CSS_SELECTOR, "h3[data-test='error']").text
+        return self.driver.find_element(*self._error_message).text
 
 
 

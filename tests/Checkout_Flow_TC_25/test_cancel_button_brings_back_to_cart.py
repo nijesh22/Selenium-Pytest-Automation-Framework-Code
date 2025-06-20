@@ -1,8 +1,5 @@
-import time
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.CartPage import CartPage
 from Pages.CheckOutPage import CheckoutPage
 from Pages.HomePage import HomePage
@@ -13,9 +10,9 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_cancel_button_brings_back_to_cart:
+class TestCancelButtonBringsBackToCart:
 
-    def test_cancel_button_brings_back_to_cart_1(self):
+    def test_cancel_button_brings_back_to_cart(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

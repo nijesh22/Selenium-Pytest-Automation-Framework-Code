@@ -25,7 +25,7 @@ class TestLoginWithBlankInputs:
             "Login with special characters"
         ]
     )
-    def test_login_with_blank_inputs_1(self, username, password, expected_error):
+    def test_login_with_blank_inputs(self, username, password, expected_error):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

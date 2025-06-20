@@ -1,21 +1,14 @@
-import time
-
-from selenium.webdriver.common.by import By
-
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Utilities.utils import Utils
-from conftest import driver
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_session_reset_after_logout:
-    def test_session_reset_after_logout_1(self):
+class TestSessionResetAfterLogout:
+    def test_session_reset_after_logout(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

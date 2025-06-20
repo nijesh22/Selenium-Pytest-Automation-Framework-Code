@@ -9,8 +9,8 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_Locked_Out_User_Login:
-    def test_Locked_Out_User_Login_1(self):
+class TestLockedOutUserLogin:
+    def test_locked_out_user_login(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

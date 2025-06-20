@@ -1,15 +1,12 @@
-import time
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.LoginPage import LoginPage
 from Utilities.utils import Utils
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_Invalid_Login_Cases:
+class TestInvalidLoginCases:
 
     @pytest.mark.parametrize("username, password", [
         ("invlaidusernametest", "secret_sauce"),
@@ -23,7 +20,7 @@ class Test_Invalid_Login_Cases:
         ]
     )
 
-    def test_Invalid_Login_Cases_1(self, username, password):
+    def test_invalid_login_cases(self, username, password):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

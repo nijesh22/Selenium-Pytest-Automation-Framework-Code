@@ -1,9 +1,5 @@
-import logging
-import time
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.CartPage import CartPage
 from Pages.CheckOutOverview import CheckOutOverview
 from Pages.CheckOutPage import CheckoutPage
@@ -13,8 +9,8 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_manipulate_item_price_in_DOM:
-    def test_manipulate_item_price_in_DOM_1(self):
+class TestManipulateItemPriceInDOM:
+    def test_manipulate_item_price_in_dom(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
@@ -37,6 +33,6 @@ class Test_manipulate_item_price_in_DOM:
         checkout_overview_page = CheckOutOverview(self.driver, wait)
         price = checkout_overview_page.get_overview_product_price()
 
-        assert price == '$29.99', f"❌ Price Mismatch After DOM Manupilation! Expected: {price}"
+        assert price == '$29.99', f"❌ Price Mismatch After DOM Manipulation! Expected: {price}"
         log.info(f"✅ {price} Price correctly displayed.")
 

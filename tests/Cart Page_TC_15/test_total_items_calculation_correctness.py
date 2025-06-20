@@ -1,9 +1,5 @@
-import time
-from turtledemo.penrose import start
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.CartPage import CartPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
@@ -13,8 +9,8 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_total_items_calculation_correctness:
-    def test_total_items_calculation_correctness_1(self):
+class TestTotalItemsCalculationCorrectness:
+    def test_total_items_calculation_correctness(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

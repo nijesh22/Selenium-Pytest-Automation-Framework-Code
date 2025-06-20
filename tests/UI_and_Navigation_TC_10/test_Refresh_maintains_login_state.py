@@ -11,8 +11,8 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_Refresh_maintains_login_state:
-    def test_Refresh_maintains_login_state_1(self):
+class TestRefreshMaintainsLoginState:
+    def test_refresh_maintains_login_state(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

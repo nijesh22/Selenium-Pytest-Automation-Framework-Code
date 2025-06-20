@@ -1,9 +1,6 @@
-import logging
-import time
 from selenium.webdriver.support import expected_conditions as EC
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.CartPage import CartPage
 from Pages.CheckOutPage import CheckoutPage
 from Pages.HomePage import HomePage
@@ -12,9 +9,9 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_Inject_script_in_input_fields:
+class TestInjectScriptInInputFields:
 
-    def test_Inject_script_in_input_fields_1(self):
+    def test_inject_script_in_input_fields(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
