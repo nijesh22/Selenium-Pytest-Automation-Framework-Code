@@ -2,11 +2,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 
+from Base.Base_driver import BaseDriver
 
-class HomePage:
-    def __init__(self,driver,wait):
-        self.driver = driver
-        self.wait = wait
+
+class HomePage(BaseDriver):
+    def __init__(self, driver, wait):
+        super().__init__(driver, wait)
 
     # ---------- Locators ----------
     _menu_btn = (By.ID, "react-burger-menu-btn")

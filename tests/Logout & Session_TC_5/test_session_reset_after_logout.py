@@ -19,15 +19,17 @@ class TestSessionResetAfterLogout:
         home_page.click_menu()
         home_page.click_logout()
 
-        current_url = self.driver.current_url
-        expected_url = "https://www.saucedemo.com/"
+        # current_url = self.driver.current_url
+        # expected_url = "https://www.saucedemo.com/"
+        #
+        # if current_url == expected_url:
+        #     log.info(f"✅ Correct URL: {current_url}")
+        # else:
+        #     log.error(f"❌ Incorrect URL! Expected: {expected_url}, but got: {current_url}")
+        #
+        # assert current_url == expected_url, f"❌ Expected: {expected_url}, but got: {current_url}"
 
-        if current_url == expected_url:
-            log.info(f"✅ Correct URL: {current_url}")
-        else:
-            log.error(f"❌ Incorrect URL! Expected: {expected_url}, but got: {current_url}")
-
-        assert current_url == expected_url, f"❌ Expected: {expected_url}, but got: {current_url}"
+        login_page.verify_url("https://www.saucedemo.com/" , "URL")
 
         self.driver.get("https://www.saucedemo.com/inventory.html")
 

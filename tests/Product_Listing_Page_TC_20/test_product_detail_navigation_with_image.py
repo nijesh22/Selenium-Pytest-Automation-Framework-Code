@@ -24,12 +24,15 @@ class TestProductDetailNavigationWithImage:
 
         time.sleep(2)
 
-        current_url = self.driver.current_url
-        expected_url = "https://www.saucedemo.com/inventory-item.html?id=4"
+        # current_url = self.driver.current_url
+        # expected_url = "https://www.saucedemo.com/inventory-item.html?id=4"
+        #
+        # if current_url == expected_url:
+        #     log.info(f"✅ IMAGE: Correct Sauce Labs Backpack URL: {current_url}")
+        # else:
+        #     log.error(f"❌ IMAGE: Incorrect Sauce Labs Backpack URL! Expected: {expected_url}, but got: {current_url}")
+        #
+        # assert current_url == expected_url, f"❌ IMAGE: Expected: {expected_url}, but got: {current_url}"
 
-        if current_url == expected_url:
-            log.info(f"✅ IMAGE: Correct Sauce Labs Backpack URL: {current_url}")
-        else:
-            log.error(f"❌ IMAGE: Incorrect Sauce Labs Backpack URL! Expected: {expected_url}, but got: {current_url}")
-
-        assert current_url == expected_url, f"❌ IMAGE: Expected: {expected_url}, but got: {current_url}"
+        Product_DetailPage = ProductDetailPage(self.driver, wait)
+        Product_DetailPage.verify_url("https://www.saucedemo.com/inventory-item.html?id=4", "URL")

@@ -19,25 +19,29 @@ class TestAddProductToCartFromDetailPage:
         home_page = HomePage(self.driver, wait)
         home_page.Sauce_Labs_Backpack_Image_click()
 
-        current_url = self.driver.current_url
-        expected_url = "https://www.saucedemo.com/inventory-item.html?id=4"
+        # current_url = self.driver.current_url
+        # expected_url = "https://www.saucedemo.com/inventory-item.html?id=4"
+        #
+        # if current_url == expected_url:
+        #     log.info(f"✅ Correct URL: {current_url}")
+        # else:
+        #     log.error(f"❌ Incorrect URL! Expected: {expected_url}, but got: {current_url}")
+        #
+        # assert current_url == expected_url, f"❌ Expected: {expected_url}, but got: {current_url}"
 
-        if current_url == expected_url:
-            log.info(f"✅ Correct URL: {current_url}")
-        else:
-            log.error(f"❌ Incorrect URL! Expected: {expected_url}, but got: {current_url}")
-
-        assert current_url == expected_url, f"❌ Expected: {expected_url}, but got: {current_url}"
+        home_page.verify_url("https://www.saucedemo.com/inventory-item.html?id=4" , "URL")
 
         details_page = ProductDetailPage(self.driver, wait)
         details_page.back_to_products_details_page()
 
-        current_url = self.driver.current_url
-        expected_url = "https://www.saucedemo.com/inventory.html"
+        # current_url = self.driver.current_url
+        # expected_url = "https://www.saucedemo.com/inventory.html"
+        #
+        # if current_url == expected_url:
+        #     log.info(f"✅ Correct URL: {current_url}")
+        # else:
+        #     log.error(f"❌ Incorrect URL! Expected: {expected_url}, but got: {current_url}")
+        #
+        # assert current_url == expected_url, f"❌ Expected: {expected_url}, but got: {current_url}"
 
-        if current_url == expected_url:
-            log.info(f"✅ Correct URL: {current_url}")
-        else:
-            log.error(f"❌ Incorrect URL! Expected: {expected_url}, but got: {current_url}")
-
-        assert current_url == expected_url, f"❌ Expected: {expected_url}, but got: {current_url}"
+        home_page.verify_url("https://www.saucedemo.com/inventory.html" , "URL")

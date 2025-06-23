@@ -1,5 +1,7 @@
 import pytest
 from selenium.webdriver.support.ui import WebDriverWait
+
+from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Utilities.utils import Utils
 
@@ -31,14 +33,18 @@ class TestValidLogin:
         login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid(username, password)
         login_page.swag_labs_login_button()
-        current_url = self.driver.current_url
-        expected_url = "https://www.saucedemo.com/inventory.html"
 
-        if current_url == expected_url:
-            log.info(f"✅ Correct URL: {current_url}")
-        else:
-            log.error(f"❌ Incorrect URL! Expected: {expected_url}, but got: {current_url}")
 
-        assert current_url == expected_url, f"❌ Expected: {expected_url}, but got: {current_url}"
+        # current_url = self.driver.current_url
+        # expected_url = "https://www.saucedemo.com/inventory.html"
+        #
+        # if current_url == expected_url:
+        #     log.info(f"✅ Correct URL: {current_url}")
+        # else:
+        #     log.error(f"❌ Incorrect URL! Expected: {expected_url}, but got: {current_url}")
+        #
+        # assert current_url == expected_url, f"❌ Expected: {expected_url}, but got: {current_url}"
 
+        home_page = HomePage(self.driver, wait)
+        home_page.verify_url("https://www.saucedemo.com/inventory.html","URL")
 

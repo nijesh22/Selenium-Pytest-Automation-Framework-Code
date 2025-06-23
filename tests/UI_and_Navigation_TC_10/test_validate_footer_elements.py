@@ -20,15 +20,17 @@ class TestValidateFooterElements:
 
         self.driver.switch_to.window(self.driver.window_handles[1])
 
-        current_url = self.driver.current_url
-        expected_url = "https://x.com/saucelabs"
+        home_page.verify_url("https://x.com/saucelabs","Sauce Labs X URL")
 
-        if current_url == expected_url:
-            log.info(f"✅ Correct Sauce Labs X URL: {current_url}")
-        else:
-            log.error(f"❌ Incorrect Sauce Labs X URL! Expected: {expected_url}, but got: {current_url}")
-
-        assert current_url == expected_url, f"❌ X URL Expected: {expected_url}, but got: {current_url}"
+        # current_url = self.driver.current_url
+        # expected_url = "https://x.com/saucelabs"
+        #
+        # if current_url == expected_url:
+        #     log.info(f"✅ Correct Sauce Labs X URL: {current_url}")
+        # else:
+        #     log.error(f"❌ Incorrect Sauce Labs X URL! Expected: {expected_url}, but got: {current_url}")
+        #
+        # assert current_url == expected_url, f"❌ X URL Expected: {expected_url}, but got: {current_url}"
 
         self.driver.switch_to.window(self.driver.window_handles[0])
 
@@ -36,15 +38,17 @@ class TestValidateFooterElements:
 
         self.driver.switch_to.window(self.driver.window_handles[2])
 
-        current_url = self.driver.current_url
-        expected_url = "https://www.facebook.com/saucelabs"
+        home_page.verify_url("https://www.facebook.com/saucelabs", "Sauce Labs Facebook URL")
 
-        if current_url == expected_url:
-            log.info(f"✅ Correct Sauce Labs Facebook URL: {current_url}")
-        else:
-            log.error(f"❌ Incorrect Sauce Labs Facebook URL! Expected: {expected_url}, but got: {current_url}")
-
-        assert current_url == expected_url, f"❌ Facebook URL Expected: {expected_url}, but got: {current_url}"
+        # current_url = self.driver.current_url
+        # expected_url = "https://www.facebook.com/saucelabs"
+        #
+        # if current_url == expected_url:
+        #     log.info(f"✅ Correct Sauce Labs Facebook URL: {current_url}")
+        # else:
+        #     log.error(f"❌ Incorrect Sauce Labs Facebook URL! Expected: {expected_url}, but got: {current_url}")
+        #
+        # assert current_url == expected_url, f"❌ Facebook URL Expected: {expected_url}, but got: {current_url}"
 
         self.driver.switch_to.window(self.driver.window_handles[0])
 
@@ -52,15 +56,17 @@ class TestValidateFooterElements:
 
         self.driver.switch_to.window(self.driver.window_handles[3])
 
-        current_url = self.driver.current_url
-        expected_url = "https://www.linkedin.com/company/sauce-labs/"
+        home_page.verify_url("https://www.linkedin.com/company/sauce-labs/", "Sauce Labs Linkedin URL")
 
-        if current_url == expected_url:
-            log.info(f"✅ Correct Sauce Labs Linkedin URL: {current_url}")
-        else:
-            log.error(f"❌ Incorrect Sauce Labs Linkedin URL! Expected: {expected_url}, but got: {current_url}")
-
-        assert current_url == expected_url, f"❌ Linkedin URL Expected: {expected_url}, but got: {current_url}"
+        # current_url = self.driver.current_url
+        # expected_url = "https://www.linkedin.com/company/sauce-labs/"
+        #
+        # if current_url == expected_url:
+        #     log.info(f"✅ Correct Sauce Labs Linkedin URL: {current_url}")
+        # else:
+        #     log.error(f"❌ Incorrect Sauce Labs Linkedin URL! Expected: {expected_url}, but got: {current_url}")
+        #
+        # assert current_url == expected_url, f"❌ Linkedin URL Expected: {expected_url}, but got: {current_url}"
 
         self.driver.switch_to.window(self.driver.window_handles[0])
 

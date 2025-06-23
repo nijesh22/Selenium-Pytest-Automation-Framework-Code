@@ -7,17 +7,22 @@ from Pages.CheckOutPage import CheckoutPage
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Utilities.utils import Utils
+from tests.BaseTest import BaseTest
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class TestValidateTotalIsCorrectItemTax:
+class TestValidateTotalIsCorrectItemTax(BaseTest):
     def test_validate_total_is_correct_item_tax(self):
+
         log = Utils.customlogger()
-        wait = WebDriverWait(self.driver, 10)
-        login_page = LoginPage(self.driver, wait)
-        login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
-        login_page.swag_labs_login_button()
+        wait = self.login_to_saucedemo(self.driver)
+
+        # log = Utils.customlogger()
+        # wait = WebDriverWait(self.driver, 10)
+        # login_page = LoginPage(self.driver, wait)
+        # login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
+        # login_page.swag_labs_login_button()
 
         home_page = HomePage(self.driver, wait)
         home_page.add_backpack_to_cart()

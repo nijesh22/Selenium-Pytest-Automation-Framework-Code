@@ -19,41 +19,47 @@ class TestValidateBurgerMenuItems:
         home_page.click_menu()
         home_page.side_menu_about_button()
 
-        current_url = self.driver.current_url
-        expected_url = "https://saucelabs.com/"
+        # current_url = self.driver.current_url
+        # expected_url = "https://saucelabs.com/"
+        #
+        # if current_url == expected_url:
+        #     log.info(f"✅ Correct Sauce Labs URL: {current_url}")
+        # else:
+        #     log.error(f"❌ Incorrect Sauce Labs URL! Expected: {expected_url}, but got: {current_url}")
+        #
+        # assert current_url == expected_url, f"❌ URL Expected: {expected_url}, but got: {current_url}"
 
-        if current_url == expected_url:
-            log.info(f"✅ Correct Sauce Labs URL: {current_url}")
-        else:
-            log.error(f"❌ Incorrect Sauce Labs URL! Expected: {expected_url}, but got: {current_url}")
-
-        assert current_url == expected_url, f"❌ URL Expected: {expected_url}, but got: {current_url}"
+        login_page.verify_url("https://saucelabs.com/", "Sauce Labs URL")
 
         self.driver.back()
 
         home_page.click_menu()
         home_page.side_menu_Alliteams_button()
 
-        current_url = self.driver.current_url
-        expected_url = "https://www.saucedemo.com/inventory.html"
+        home_page.verify_url("https://www.saucedemo.com/inventory.html","URL")
 
-        if current_url == expected_url:
-            log.info(f"✅ Correct inventory URL: {current_url}")
-        else:
-            log.error(f"❌ Incorrect inventory URL! Expected: {expected_url}, but got: {current_url}")
-
-        assert current_url == expected_url, f"❌ URL Expected: {expected_url}, but got: {current_url}"
+        # current_url = self.driver.current_url
+        # expected_url = "https://www.saucedemo.com/inventory.html"
+        #
+        # if current_url == expected_url:
+        #     log.info(f"✅ Correct inventory URL: {current_url}")
+        # else:
+        #     log.error(f"❌ Incorrect inventory URL! Expected: {expected_url}, but got: {current_url}")
+        #
+        # assert current_url == expected_url, f"❌ URL Expected: {expected_url}, but got: {current_url}"
 
         home_page.click_logout()
 
-        current_url = self.driver.current_url
-        expected_url = "https://www.saucedemo.com/"
+        login_page.verify_url("https://www.saucedemo.com/", "URL")
 
-        if current_url == expected_url:
-            log.info(f"✅ Correct login URL: {current_url}")
-        else:
-            log.error(f"❌ Correct login URL! Expected: {expected_url}, but got: {current_url}")
-
-        assert current_url == expected_url, f"❌ URL Expected: {expected_url}, but got: {current_url}"
+        # current_url = self.driver.current_url
+        # expected_url = "https://www.saucedemo.com/"
+        #
+        # if current_url == expected_url:
+        #     log.info(f"✅ Correct login URL: {current_url}")
+        # else:
+        #     log.error(f"❌ Correct login URL! Expected: {expected_url}, but got: {current_url}")
+        #
+        # assert current_url == expected_url, f"❌ URL Expected: {expected_url}, but got: {current_url}"
 
 

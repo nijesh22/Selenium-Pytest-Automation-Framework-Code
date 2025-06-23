@@ -19,7 +19,7 @@ class TestAllProductsListed:
         home_page = HomePage(self.driver, wait)
         product_list = home_page.get_all_products()
 
-        log.info("🛒 Products found on page:")
+        log.info(" Products found on page:")
         for product in product_list:
             print(" -", product.text)  # Add .text to see what's inside each product
 

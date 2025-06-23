@@ -1,9 +1,11 @@
 from selenium.webdriver.common.by import By
 
-class CheckoutPage:
+from Base.Base_driver import BaseDriver
+
+
+class CheckoutPage(BaseDriver):
     def __init__(self, driver, wait):
-        self.driver = driver
-        self.wait = wait
+        super().__init__(driver, wait)
 
     # ---------- Locators ----------
 

@@ -1,9 +1,11 @@
 from selenium.webdriver.common.by import By
 
-class LoginPage():
-    def __init__(self,driver,wait):
-        self.driver = driver
-        self.wait = wait
+from Base.Base_driver import BaseDriver
+
+
+class LoginPage(BaseDriver):
+    def __init__(self, driver, wait):
+        super().__init__(driver, wait)
 
     # ---------- Locators ----------
 
