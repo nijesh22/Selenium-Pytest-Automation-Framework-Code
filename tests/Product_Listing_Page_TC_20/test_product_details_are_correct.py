@@ -10,8 +10,8 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_product_details_are_correct:
-    def test_product_details_are_correct_1(self):
+class TestProductDetailsAreCorrect:
+    def test_product_details_are_correct(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

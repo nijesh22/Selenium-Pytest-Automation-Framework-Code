@@ -8,7 +8,7 @@ from Utilities.utils import Utils
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestSortByName:
-    def test_sort_name_a_to_z(self):
+    def test_sort_name_z_to_a(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
 

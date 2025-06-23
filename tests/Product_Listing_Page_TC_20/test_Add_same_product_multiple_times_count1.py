@@ -10,8 +10,8 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_remove_product_from_cart:
-    def test_remove_product_from_cart_1(self):
+class TestRemoveProductFromCart:
+    def test_remove_product_from_cart(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

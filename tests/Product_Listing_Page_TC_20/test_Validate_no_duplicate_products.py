@@ -8,7 +8,7 @@ from Utilities.utils import Utils
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestValidateNoDuplicateProducts:
-    def testValidateNoDuplicateProducts_1(self):
+    def test_validate_no_duplicate_Products(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
 

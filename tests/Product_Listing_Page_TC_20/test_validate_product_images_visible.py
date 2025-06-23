@@ -10,7 +10,7 @@ from Utilities.utils import Utils
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestValidateProductNamesVisible:
-    def testValidateProductNamesVisible_1(self):
+    def test_Validate_Product_Image_Visible(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
 

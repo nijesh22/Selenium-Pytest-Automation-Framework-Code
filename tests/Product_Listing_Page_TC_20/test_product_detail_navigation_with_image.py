@@ -11,8 +11,8 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_product_detail_navigation_with_image:
-    def test_product_detail_navigation_1(self):
+class TestProductDetailNavigationWithImage:
+    def test_product_detail_navigation(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)

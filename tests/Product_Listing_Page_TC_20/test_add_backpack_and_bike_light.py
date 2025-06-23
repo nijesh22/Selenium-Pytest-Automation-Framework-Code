@@ -1,6 +1,5 @@
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Utilities.utils import Utils
@@ -8,8 +7,8 @@ from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class Test_add_backpack_and_bike_light:
-    def test_add_backpack_and_bike_light_1(self):
+class TestAddBackpackAndBikeLight:
+    def test_add_backpack_and_bike_light(self):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
         login_page = LoginPage(self.driver, wait)
