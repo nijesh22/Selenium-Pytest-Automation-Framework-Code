@@ -181,3 +181,5 @@ class HomePage(BaseDriver):
     def open_and_close_side_menu(self):
         self.click_menu()
         self.side_menu_close_button()
+
+

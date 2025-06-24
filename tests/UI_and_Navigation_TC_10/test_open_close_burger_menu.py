@@ -12,8 +12,6 @@ class TestOpenCloseBurgerMenu(BaseTest):
         wait = self.login_to_saucedemo(self.driver)
 
         home_page = HomePage(self.driver, wait)
-        home_page.click_menu()
-        home_page.side_menu_close_button()
+        home_page.open_and_close_side_menu()
 
-        home_page.click_menu()
-        home_page.side_menu_close_button()
+        home_page.open_and_close_side_menu()

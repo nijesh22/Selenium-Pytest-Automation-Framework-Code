@@ -19,21 +19,18 @@ class TestValidateResponsiveLayout(BaseTest):
 
         assert home_page.is_burger_menu_visible(), "❌ Burger menu not visible!"
 
-        home_page.click_menu()
-        home_page.side_menu_close_button()
+        home_page.open_and_close_side_menu()
 
         # Resize to desktop
         home_page.resize_window(1366, 768)
         time.sleep(1)
         assert home_page.is_burger_menu_visible(), "❌ Burger menu not visible!"
 
-        home_page.click_menu()
-        home_page.side_menu_close_button()
+        home_page.open_and_close_side_menu()
 
         # Resize to tablet
         self.driver.set_window_size(768, 1024)
         time.sleep(1)
         assert home_page.is_burger_menu_visible(), "❌ Burger menu not visible!"
 
-        home_page.click_menu()
-        home_page.side_menu_close_button()
+        home_page.open_and_close_side_menu()
