@@ -169,3 +169,15 @@ class HomePage(BaseDriver):
 
     def resize_window(self, width, height):
         self.driver.set_window_size(width, height)
+
+    def add_backpack_item_and_go_to_cart(self):
+        self.add_backpack_to_cart()
+        self.get_homepage_cart_icon_click()
+
+    def open_menu_and_logout(self):
+        self.click_menu()
+        self.click_logout()
+
+    def open_and_close_side_menu(self):
+        self.click_menu()
+        self.side_menu_close_button()

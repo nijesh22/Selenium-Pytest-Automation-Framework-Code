@@ -1,11 +1,6 @@
 import time
-
 import pytest
-from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.HomePage import HomePage
-from Pages.LoginPage import LoginPage
-from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
@@ -14,13 +9,7 @@ from tests.BaseTest import BaseTest
 class TestValidateResponsiveLayout(BaseTest):
     def test_validate_responsive_layout(self):
 
-        log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
-
-        # wait = WebDriverWait(self.driver, 10)
-        # login_page = LoginPage(self.driver, wait)
-        # login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
-        # login_page.swag_labs_login_button()
 
         home_page = HomePage(self.driver, wait)
 

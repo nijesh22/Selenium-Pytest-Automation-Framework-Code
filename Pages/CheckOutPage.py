@@ -65,3 +65,7 @@ class CheckoutPage(BaseDriver):
 
     def is_on_step_one(self):
         return "checkout-step-one" in self.driver.current_url
+
+    def fill_checkout_info_and_click_continue(self, first_name, last_name, zip_code):
+        self.first_last_zip_validation(first_name, last_name, zip_code)
+        self.click_continue()

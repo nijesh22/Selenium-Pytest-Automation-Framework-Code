@@ -15,12 +15,6 @@ class TestProductPriceMatchesListing(BaseTest):
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
 
-        # log = Utils.customlogger()
-        # wait = WebDriverWait(self.driver, 10)
-        # login_page = LoginPage(self.driver, wait)
-        # login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
-        # login_page.swag_labs_login_button()
-
         home_page = HomePage(self.driver, wait)
         product_detail_page = ProductDetailPage(self.driver, wait)
 

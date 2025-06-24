@@ -1,10 +1,8 @@
 import pytest
-from selenium.webdriver.support.wait import WebDriverWait
 from Pages.CartPage import CartPage
 from Pages.CheckOutOverview import CheckOutOverview
 from Pages.CheckOutPage import CheckoutPage
 from Pages.HomePage import HomePage
-from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
@@ -17,12 +15,6 @@ class TestVerifyProductListMatchesCartOverview(BaseTest):
 
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
-
-        # log = Utils.customlogger()
-        # wait = WebDriverWait(self.driver, 10)
-        # login_page = LoginPage(self.driver, wait)
-        # login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
-        # login_page.swag_labs_login_button()
 
         home_page = HomePage(self.driver, wait)
         home_page.add_backpack_to_cart()
@@ -38,9 +30,7 @@ class TestVerifyProductListMatchesCartOverview(BaseTest):
         Cart_page.cart_checkout_button_cart_page()
 
         checkout_page = CheckoutPage(self.driver, wait)
-        checkout_page.first_last_zip_validation("manu", "ragav", "12345")
-        checkout_page.click_continue()
-
+        checkout_page.fill_checkout_info_and_click_continue("manu", "ragav", "12345")
 
         checkout_overview_page = CheckOutOverview(self.driver, wait)
         name = checkout_overview_page.get_overview_product_name()

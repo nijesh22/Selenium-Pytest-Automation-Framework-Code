@@ -1,8 +1,6 @@
 import time
 import pytest
-from selenium.webdriver.support.wait import WebDriverWait
 from Pages.HomePage import HomePage
-from Pages.LoginPage import LoginPage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
@@ -15,12 +13,6 @@ class TestCartGetsClearedOnLogout(BaseTest):
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
 
-        # log = Utils.customlogger()
-        # wait = WebDriverWait(self.driver, 10)
-        # login_page = LoginPage(self.driver, wait)
-        # login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
-        # login_page.swag_labs_login_button()
-
         home_page = HomePage(self.driver, wait)
         home_page.add_backpack_to_cart()
 
@@ -31,8 +23,7 @@ class TestCartGetsClearedOnLogout(BaseTest):
         assert cart_count == '1', f"❌ Expected cart badge to show '1', but got '{cart_count}'"
         log.info("✅ Cart badge correctly shows 1 item.")
 
-        home_page.click_menu()
-        home_page.click_logout()
+        home_page.open_menu_and_logout()
 
         self.login_to_saucedemo(self.driver)
 

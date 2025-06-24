@@ -1,11 +1,7 @@
-import time
-
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from Pages.LoginPage import LoginPage
 from Utilities.utils import Utils
-
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")

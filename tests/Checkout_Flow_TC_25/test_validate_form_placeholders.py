@@ -1,9 +1,7 @@
 import pytest
-from selenium.webdriver.support.wait import WebDriverWait
 from Pages.CartPage import CartPage
 from Pages.CheckOutPage import CheckoutPage
 from Pages.HomePage import HomePage
-from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
@@ -15,15 +13,8 @@ class TestValidateFormPlaceholders(BaseTest):
 
     def test_validate_form_placeholders(self):
 
-
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
-
-        # log = Utils.customlogger()
-        # wait = WebDriverWait(self.driver, 10)
-        # login_page = LoginPage(self.driver, wait)
-        # login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
-        # login_page.swag_labs_login_button()
 
         home_page = HomePage(self.driver, wait)
         home_page.Sauce_Labs_Backpack_Image_click()
