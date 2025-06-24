@@ -4,17 +4,22 @@ from selenium.webdriver.support.wait import WebDriverWait
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Utilities.utils import Utils
+from tests.BaseTest import BaseTest
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class TestCartGetsClearedOnLogout:
+class TestCartGetsClearedOnLogout(BaseTest):
     def test_cart_gets_cleared_on_logout(self):
+
         log = Utils.customlogger()
-        wait = WebDriverWait(self.driver, 10)
-        login_page = LoginPage(self.driver, wait)
-        login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
-        login_page.swag_labs_login_button()
+        wait = self.login_to_saucedemo(self.driver)
+
+        # log = Utils.customlogger()
+        # wait = WebDriverWait(self.driver, 10)
+        # login_page = LoginPage(self.driver, wait)
+        # login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
+        # login_page.swag_labs_login_button()
 
         home_page = HomePage(self.driver, wait)
         home_page.add_backpack_to_cart()
@@ -29,8 +34,7 @@ class TestCartGetsClearedOnLogout:
         home_page.click_menu()
         home_page.click_logout()
 
-        login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
-        login_page.swag_labs_login_button()
+        self.login_to_saucedemo(self.driver)
 
         cart_count_latest = home_page.get_cart_badge_count()
 

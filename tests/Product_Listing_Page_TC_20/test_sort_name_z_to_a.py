@@ -3,19 +3,22 @@ from selenium.webdriver.support.ui import WebDriverWait
 from Pages.LoginPage import LoginPage
 from Pages.HomePage import HomePage
 from Utilities.utils import Utils
+from tests.BaseTest import BaseTest
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class TestSortByName:
+class TestSortByName(BaseTest):
     def test_sort_name_z_to_a(self):
+
         log = Utils.customlogger()
-        wait = WebDriverWait(self.driver, 10)
+        wait = self.login_to_saucedemo(self.driver)
 
-
-        login_page = LoginPage(self.driver, wait)
-        login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
-        login_page.swag_labs_login_button()
+        # log = Utils.customlogger()
+        # wait = WebDriverWait(self.driver, 10)
+        # login_page = LoginPage(self.driver, wait)
+        # login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
+        # login_page.swag_labs_login_button()
 
 
         home_page = HomePage(self.driver, wait)

@@ -3,17 +3,22 @@ from selenium.webdriver.support.wait import WebDriverWait
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Utilities.utils import Utils
+from tests.BaseTest import BaseTest
 
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
-class TestValidateBurgerMenuItems:
+class TestValidateBurgerMenuItems(BaseTest):
     def test_validate_burger_menu_items(self):
+
         log = Utils.customlogger()
-        wait = WebDriverWait(self.driver, 10)
-        login_page = LoginPage(self.driver, wait)
-        login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
-        login_page.swag_labs_login_button()
+        wait = self.login_to_saucedemo(self.driver)
+
+        # log = Utils.customlogger()
+        # wait = WebDriverWait(self.driver, 10)
+        # login_page = LoginPage(self.driver, wait)
+        # login_page.swag_labs_loginIsvalid("standard_user", "secret_sauce")
+        # login_page.swag_labs_login_button()
 
         home_page = HomePage(self.driver, wait)
         home_page.click_menu()
@@ -28,7 +33,7 @@ class TestValidateBurgerMenuItems:
         #     log.error(f"❌ Incorrect Sauce Labs URL! Expected: {expected_url}, but got: {current_url}")
         #
         # assert current_url == expected_url, f"❌ URL Expected: {expected_url}, but got: {current_url}"
-
+        login_page = LoginPage(self.driver, wait)
         login_page.verify_url("https://saucelabs.com/", "Sauce Labs URL")
 
         self.driver.back()
