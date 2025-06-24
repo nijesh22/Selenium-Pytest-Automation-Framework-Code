@@ -31,3 +31,8 @@ class Utils:
             logger.addHandler(console_handler)
 
         return logger
+
+    @staticmethod
+    def assert_cart_badge_count(actual_count, expected_count, log):
+        assert actual_count == str(expected_count), f"❌ Expected cart badge to show '{expected_count}', but got '{actual_count}'"
+        log.info(f"✅ Cart badge correctly shows {expected_count} item(s).")

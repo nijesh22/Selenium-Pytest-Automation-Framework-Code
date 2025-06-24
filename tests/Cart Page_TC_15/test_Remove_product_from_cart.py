@@ -20,5 +20,4 @@ class TestRemoveProductFromCart(BaseTest):
         cart_page.cart_remove_product_cart_page()
         cart_count_after_removal = home_page.get_cart_badge_count()
 
-        assert cart_count_after_removal == '0', f"❌ Expected cart badge to show '0', but got '{cart_count_after_removal}'"
-        log.info("✅ Cart badge correctly shows 0 item in details page.")
+        Utils.assert_cart_badge_count(cart_count_after_removal, 0, log)

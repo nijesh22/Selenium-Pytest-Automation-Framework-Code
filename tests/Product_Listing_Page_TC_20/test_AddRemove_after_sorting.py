@@ -32,8 +32,8 @@ class TestAddRemoveAfterSorting(BaseTest):
 
             # ✅ Assert cart badge shows 1
             badge_count = home_page.get_cart_badge_count()
-            assert badge_count == '1', f"❌ Cart badge should show 1 after adding. Got: '{badge_count}'"
-            log.info("🛒 ✅ Cart badge shows 1 after adding product.")
+
+            Utils.assert_cart_badge_count(badge_count, 1, log)
 
             # Remove product from cart
             home_page.remove_backpack_from_cart()

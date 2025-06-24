@@ -20,8 +20,7 @@ class TestCartGetsClearedOnLogout(BaseTest):
 
         cart_count = home_page.get_cart_badge_count()
 
-        assert cart_count == '1', f"❌ Expected cart badge to show '1', but got '{cart_count}'"
-        log.info("✅ Cart badge correctly shows 1 item.")
+        Utils.assert_cart_badge_count(cart_count, 1, log)
 
         home_page.open_menu_and_logout()
 

@@ -16,5 +16,4 @@ class TestAddBackpackAndBikeLight(BaseTest):
         home_page.add_backpack_and_bike_light()
         cart_count = home_page.get_cart_badge_count()
 
-        assert cart_count == "2", f"Expected '2' items in cart, but got {cart_count}"
-        log.info("✅ Cart badge correctly shows 2 item.")
+        Utils.assert_cart_badge_count(cart_count, 2, log)

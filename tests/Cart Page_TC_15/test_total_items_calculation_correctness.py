@@ -21,8 +21,7 @@ class TestTotalItemsCalculationCorrectness(BaseTest):
 
         cart_count = home_page.get_cart_badge_count()
 
-        assert cart_count == '2', f"❌ Expected cart badge to show '2', but got '{cart_count}'"
-        log.info("✅ Cart badge correctly shows 2 items.")
+        Utils.assert_cart_badge_count(cart_count, 2, log)
 
         home_page.get_homepage_cart_icon_click()
 
