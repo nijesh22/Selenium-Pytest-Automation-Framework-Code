@@ -1,19 +1,15 @@
-import time
 import pytest
-from selenium.webdriver.support.wait import WebDriverWait
-from Pages.HomePage import HomePage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestProductDetailsAreCorrect(BaseTest):
-    def test_product_details_are_correct(self):
+    def test_product_details_are_correct(self,home_page):
 
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
 
-        home_page = HomePage(self.driver, wait)
         products = home_page.get_all_products()
 
         assert len(products) > 0, "❌ No products found!"

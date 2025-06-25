@@ -1,9 +1,5 @@
 import math
 import pytest
-from Pages.CartPage import CartPage
-from Pages.CheckOutOverview import CheckOutOverview
-from Pages.CheckOutPage import CheckoutPage
-from Pages.HomePage import HomePage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
@@ -11,27 +7,23 @@ from tests.BaseTest import BaseTest
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestValidateTotalIsCorrectItemTax(BaseTest):
-    def test_validate_total_is_correct_item_tax(self):
+    def test_validate_total_is_correct_item_tax(self,home_page,cart_page,checkout_page,checkout_overview_page):
 
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
 
-        home_page = HomePage(self.driver, wait)
         home_page.add_backpack_to_cart()
         home_page.Sauce_Labs_Backpack_Image_click()
 
         home_page.get_homepage_cart_icon_click()
-        Cart_page = CartPage(self.driver, wait)
-        Cart_page.cart_checkout_button_cart_page()
 
-        checkout_page = CheckoutPage(self.driver, wait)
+        cart_page.cart_checkout_button_cart_page()
+
         checkout_page.fill_checkout_info_and_click_continue("manu", "ragav", "12345")
 
-        CheckOutOverviews = CheckOutOverview(self.driver, wait)
-
-        item_total = CheckOutOverviews.get_item_total()
-        tax = CheckOutOverviews.get_tax()
-        total_ui = CheckOutOverviews.get_total()
+        item_total = checkout_overview_page.get_item_total()
+        tax = checkout_overview_page.get_tax()
+        total_ui = checkout_overview_page.get_total()
 
         expected_total = item_total + tax
 

@@ -11,20 +11,17 @@ from tests.BaseTest import BaseTest
 @pytest.mark.usefixtures("setup")
 class TestValidateFormPlaceholders(BaseTest):
 
-    def test_validate_form_placeholders(self):
+    def test_validate_form_placeholders(self,home_page,product_details_page,cart_page,checkout_page):
 
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
 
-        home_page = HomePage(self.driver, wait)
         home_page.Sauce_Labs_Backpack_Image_click()
-        details_page = ProductDetailPage(self.driver, wait)
-        details_page.add_backpack_to_cart_details_page()
-        home_page.get_homepage_cart_icon_click()
-        Cart_page = CartPage(self.driver, wait)
-        Cart_page.cart_checkout_button_cart_page()
 
-        checkout_page = CheckoutPage(self.driver, wait)
+        product_details_page.add_backpack_to_cart_details_page()
+        home_page.get_homepage_cart_icon_click()
+
+        cart_page.cart_checkout_button_cart_page()
 
         Utils.assert_placeholder(checkout_page.get_first_name_placeholder(), "First Name", "First Name", log)
         Utils.assert_placeholder(checkout_page.get_last_name_placeholder(), "Last Name", "Last Name", log)

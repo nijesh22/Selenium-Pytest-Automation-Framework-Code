@@ -33,21 +33,18 @@ class TestFirstLastPostalCodeErrorMessage(BaseTest):
         ]
     )
 
-    def test_first_last_postalcode_error_message(self,fname,lname,zipcode,expected_error):
+    def test_first_last_postalcode_error_message(self,fname,lname,zipcode,expected_error,home_page,product_details_page,cart_page,checkout_page):
 
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
 
-        home_page = HomePage(self.driver, wait)
         home_page.Sauce_Labs_Backpack_Image_click()
-        details_page = ProductDetailPage(self.driver, wait)
-        details_page.add_backpack_to_cart_details_page()
+
+        product_details_page.add_backpack_to_cart_details_page()
         home_page.get_homepage_cart_icon_click()
-        Cart_page = CartPage(self.driver, wait)
-        Cart_page.cart_checkout_button_cart_page()
 
+        cart_page.cart_checkout_button_cart_page()
 
-        checkout_page = CheckoutPage(self.driver, wait)
         checkout_page.first_last_zip_validation(fname,lname,zipcode)
 
         checkout_page.click_continue()

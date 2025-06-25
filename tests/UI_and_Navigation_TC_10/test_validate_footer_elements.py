@@ -1,5 +1,4 @@
 import pytest
-from Pages.HomePage import HomePage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
@@ -7,12 +6,11 @@ from tests.BaseTest import BaseTest
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestValidateFooterElements(BaseTest):
-    def test_validate_footer_elements(self):
+    def test_validate_footer_elements(self,home_page):
 
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
 
-        home_page = HomePage(self.driver, wait)
         home_page.twitter_footer()
 
         self.driver.switch_to.window(self.driver.window_handles[1])

@@ -10,23 +10,20 @@ from tests.BaseTest import BaseTest
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestPlaceOrderWithMultipleItemsFinish(BaseTest):
-    def test_place_order_with_multiple_items_finish(self):
+    def test_place_order_with_multiple_items_finish(self,home_page,cart_page,checkout_page,finish_page):
 
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
 
-        home_page = HomePage(self.driver, wait)
         home_page.add_backpack_and_bike_light()
         home_page.Sauce_Labs_Backpack_Image_click()
 
         home_page.get_homepage_cart_icon_click()
-        Cart_page = CartPage(self.driver, wait)
-        Cart_page.cart_checkout_button_cart_page()
 
-        checkout_page = CheckoutPage(self.driver, wait)
+        cart_page.cart_checkout_button_cart_page()
+
         checkout_page.fill_checkout_info_and_click_continue("manu", "ragav", "12345")
 
-        finish_page = FinishPage(self.driver, wait)
         finish_page.click_finish()
 
         current_success_message = finish_page.thankyou_message()

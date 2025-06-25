@@ -1,5 +1,4 @@
 import pytest
-from Pages.HomePage import HomePage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
@@ -7,12 +6,10 @@ from tests.BaseTest import BaseTest
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestAddRemoveAfterSorting(BaseTest):
-    def test_add_remove_after_sorting(self):
+    def test_add_remove_after_sorting(self,home_page):
 
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
-
-        home_page = HomePage(self.driver, wait)
 
         sort_options = [
             "Name (A to Z)",

@@ -1,6 +1,4 @@
 import pytest
-from Pages.HomePage import HomePage
-from Pages.LoginPage import LoginPage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
@@ -8,15 +6,13 @@ from tests.BaseTest import BaseTest
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestSessionResetAfterLogout(BaseTest):
-    def test_session_reset_after_logout(self):
+    def test_session_reset_after_logout(self,home_page,login_page):
 
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
 
-        home_page = HomePage(self.driver, wait)
         home_page.open_menu_and_logout()
 
-        login_page = LoginPage(self.driver, wait)
         login_page.verify_url("https://www.saucedemo.com/" , "URL")
 
         self.driver.get("https://www.saucedemo.com/inventory.html")

@@ -1,15 +1,13 @@
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-from Pages.LoginPage import LoginPage
 from Utilities.utils import Utils
 
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestLockedOutUserLogin:
-    def test_locked_out_user_login(self):
+    def test_locked_out_user_login(self,login_page):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
-        login_page = LoginPage(self.driver, wait)
         login_page.swag_labs_loginIsvalid("locked_out_user", "secret_sauce")
         login_page.swag_labs_login_button()
 

@@ -7,12 +7,11 @@ from tests.BaseTest import BaseTest
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestSortByPriceHighToLow(BaseTest):
-    def test_sort_price_high_to_low(self):
+    def test_sort_price_high_to_low(self,home_page):
 
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
 
-        home_page = HomePage(self.driver, wait)
         home_page.select_sort_option("Price (high to low)")
         ui_prices = home_page.get_product_prices()
 

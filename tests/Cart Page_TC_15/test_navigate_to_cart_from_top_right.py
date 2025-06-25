@@ -8,13 +8,11 @@ from tests.BaseTest import BaseTest
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestContinueShoppingButtonWorks(BaseTest):
-    def test_continue_shopping_button_works(self):
+    def test_continue_shopping_button_works(self,home_page,cart_page):
 
         wait = self.login_to_saucedemo(self.driver)
 
-        home_page = HomePage(self.driver, wait)
         home_page.get_homepage_cart_icon_click()
 
-        Cart_page = CartPage(self.driver, wait)
-        Cart_page.verify_url("https://www.saucedemo.com/cart.html","URL")
+        cart_page.verify_url("https://www.saucedemo.com/cart.html","URL")
 

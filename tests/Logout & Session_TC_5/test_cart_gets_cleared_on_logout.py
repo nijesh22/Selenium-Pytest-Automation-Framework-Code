@@ -1,6 +1,5 @@
 import time
 import pytest
-from Pages.HomePage import HomePage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
@@ -8,12 +7,11 @@ from tests.BaseTest import BaseTest
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestCartGetsClearedOnLogout(BaseTest):
-    def test_cart_gets_cleared_on_logout(self):
+    def test_cart_gets_cleared_on_logout(self,home_page):
 
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
 
-        home_page = HomePage(self.driver, wait)
         home_page.add_backpack_to_cart()
 
         time.sleep(1)

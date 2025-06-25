@@ -1,9 +1,6 @@
 from selenium.webdriver.support import expected_conditions as EC
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-from Pages.CartPage import CartPage
-from Pages.CheckOutPage import CheckoutPage
-from Pages.HomePage import HomePage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
@@ -12,20 +9,17 @@ from tests.BaseTest import BaseTest
 @pytest.mark.usefixtures("setup")
 class TestInjectScriptInInputFields(BaseTest):
 
-    def test_inject_script_in_input_fields(self):
+    def test_inject_script_in_input_fields(self,home_page,cart_page,checkout_page):
 
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
 
-        home_page = HomePage(self.driver, wait)
         home_page.add_backpack_item_and_go_to_cart()
 
-        cart_page = CartPage(self.driver, wait)
         cart_page.cart_checkout_button_cart_page()
 
         xss_script = "<script>alert('XSS')</script>"
 
-        checkout_page = CheckoutPage(self.driver, wait)
         checkout_page.first_last_zip_validation(xss_script, xss_script, xss_script)
         checkout_page.click_continue()
 

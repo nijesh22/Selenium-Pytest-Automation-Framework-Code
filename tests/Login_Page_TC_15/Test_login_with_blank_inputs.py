@@ -1,6 +1,5 @@
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-from Pages.LoginPage import LoginPage
 from Utilities.utils import Utils
 
 
@@ -25,11 +24,9 @@ class TestLoginWithBlankInputs:
             "Login with special characters"
         ]
     )
-    def test_login_with_blank_inputs(self, username, password, expected_error):
+    def test_login_with_blank_inputs(self,login_page, username, password, expected_error):
         log = Utils.customlogger()
         wait = WebDriverWait(self.driver, 10)
-        login_page = LoginPage(self.driver, wait)
-
         login_page.swag_labs_loginIsvalid(username, password)
         login_page.swag_labs_login_button()
 

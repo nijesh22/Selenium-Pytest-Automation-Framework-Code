@@ -5,12 +5,21 @@ import tempfile
 import pytest
 from pytest_html import extras
 from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.edge.service import Service as EdgeService
+
+from Pages.CartPage import CartPage
+from Pages.CheckOutOverview import CheckOutOverview
+from Pages.CheckOutPage import CheckoutPage
+from Pages.FinishPage import FinishPage
+from Pages.HomePage import HomePage
+from Pages.LoginPage import LoginPage
+from Pages.ProductDetailPage import ProductDetailPage
 from Utilities.utils import Utils
 
 driver = None
@@ -112,5 +121,44 @@ def pytest_runtest_makereport(item):
                 extra.append(extras.html('<div style="color: orange;">Driver not available for screenshot</div>'))
 
     report.extras = extra
+
+
+@pytest.fixture
+def wait(driver):
+    return WebDriverWait(driver, 10)
+
+@pytest.fixture
+def home_page(driver, wait):
+    return HomePage(driver, wait)
+
+@pytest.fixture
+def cart_page(driver,wait):
+    return CartPage(driver,wait)
+
+@pytest.fixture
+def checkout_overview_page(driver,wait):
+    return CheckOutOverview(driver,wait)
+
+@pytest.fixture
+def checkout_page(driver,wait):
+    return CheckoutPage(driver,wait)
+
+@pytest.fixture
+def finish_page(driver,wait):
+    return FinishPage(driver,wait)
+
+@pytest.fixture
+def login_page(driver,wait):
+    return LoginPage(driver,wait)
+
+@pytest.fixture
+def product_details_page(driver,wait):
+    return ProductDetailPage(driver,wait)
+
+@pytest.fixture
+def driver(request):
+    return request.cls.driver
+
+
 
 

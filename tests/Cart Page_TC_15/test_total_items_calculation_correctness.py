@@ -11,12 +11,11 @@ from tests.BaseTest import BaseTest
 @pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
 @pytest.mark.usefixtures("setup")
 class TestTotalItemsCalculationCorrectness(BaseTest):
-    def test_total_items_calculation_correctness(self):
+    def test_total_items_calculation_correctness(self,home_page,cart_page):
 
         log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
 
-        home_page = HomePage(self.driver, wait)
         home_page.add_backpack_and_bike_light()
 
         cart_count = home_page.get_cart_badge_count()
@@ -25,13 +24,11 @@ class TestTotalItemsCalculationCorrectness(BaseTest):
 
         home_page.get_homepage_cart_icon_click()
 
-        Cart_page = CartPage(self.driver, wait)
-
-        Cart_quantity_count = len(Cart_page.cart_quantity_count_cart_page_element())
+        Cart_quantity_count = len(cart_page.cart_quantity_count_cart_page_element())
 
         total_quantity = 0
         for i in range(Cart_quantity_count):
-            qty_text = Cart_page.cart_quantity_count_cart_page_element_index(i)
+            qty_text = cart_page.cart_quantity_count_cart_page_element_index(i)
             total_quantity += int(qty_text)
 
         cart_count_after_removal = int(home_page.get_cart_badge_count())
