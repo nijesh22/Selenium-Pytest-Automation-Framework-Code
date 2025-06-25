@@ -21,8 +21,8 @@ class TestProceedWithBlankFieldsExpectError(BaseTest):
         Cart_page = CartPage(self.driver, wait)
 
         cart_items = Cart_page.cart_is_empty_or_not_cart_page_element()
-        assert len(cart_items) == 0, "❌ Cart is not empty!"
-        log.info("✅ Cart is empty.")
+
+        Utils.assert_cart_is_empty(cart_items, 0,log)
 
         Cart_page.cart_checkout_button_cart_page()
 

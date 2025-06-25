@@ -36,3 +36,13 @@ class Utils:
     def assert_cart_badge_count(actual_count, expected_count, log):
         assert actual_count == str(expected_count), f"❌ Expected cart badge to show '{expected_count}', but got '{actual_count}'"
         log.info(f"✅ Cart badge correctly shows {expected_count} item(s).")
+
+    @staticmethod
+    def assert_cart_is_empty(cart_items,items_count, log):
+        assert len(cart_items) == items_count, "❌ Cart is not empty!"
+        log.info("✅ Cart is empty.")
+
+    @staticmethod
+    def assert_text_match(expected, actual, field_name, log):
+        assert actual == expected, f"❌ {field_name} Mismatch! Expected: {expected}, Got: {actual}"
+        log.info(f"✅ {expected} | {field_name} is correctly displayed.")

@@ -52,3 +52,5 @@ class CartPage(BaseDriver):
 
     def change_cart_price_from_DOM(self,new_price="$10000.00"):
         self.driver.execute_script(f"document.querySelector('.inventory_item_price').textContent = '{new_price}';")
+
+
