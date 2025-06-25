@@ -27,14 +27,11 @@ class TestInvalidLoginCases:
         login_page.swag_labs_loginIsvalid(username, password)
         login_page.swag_labs_login_button()
 
-        # Wait for error message to appear
         errormessage = login_page.login_error_message()
         error_text = errormessage.text
 
-        # Expected error message
         expected_error = "Epic sadface: Username and password do not match any user in this service"
 
-        # Assertion
         assert error_text == expected_error, f"❌ Expected error: '{expected_error}', but got: '{error_text}'"
         log.info("✅ invalid username & invalid password correct error message is displayed")
 

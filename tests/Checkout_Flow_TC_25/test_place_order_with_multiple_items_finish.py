@@ -32,5 +32,4 @@ class TestPlaceOrderWithMultipleItemsFinish(BaseTest):
         current_success_message = finish_page.thankyou_message()
         expected_success_message = "Thank you for your order!"
 
-        assert current_success_message == expected_success_message, f"❌ Expected: '{expected_success_message}', but got: '{current_success_message}'"
-        log.info(f"✅ Correct order successful message displayed: {current_success_message}")
+        Utils.assert_text_equals(current_success_message, expected_success_message, "Order Success Message", log)

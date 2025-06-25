@@ -30,7 +30,7 @@ class TestAddRemoveAfterSorting(BaseTest):
             # Add product to cart
             home_page.add_backpack_to_cart()
 
-            # ✅ Assert cart badge shows 1
+            # Assert cart badge shows 1
             badge_count = home_page.get_cart_badge_count()
 
             Utils.assert_cart_badge_count(badge_count, 1, log)
@@ -38,7 +38,7 @@ class TestAddRemoveAfterSorting(BaseTest):
             # Remove product from cart
             home_page.remove_backpack_from_cart()
 
-            # ✅ Assert cart badge is gone
+            # Assert cart badge is gone
             badge_count_after_removal = home_page.get_cart_badge_count()
             assert badge_count_after_removal == '' or badge_count_after_removal == '0', \
                 f"❌ Cart should be empty after removal. Got: '{badge_count_after_removal}'"

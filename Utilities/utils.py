@@ -46,3 +46,34 @@ class Utils:
     def assert_text_match(expected, actual, field_name, log):
         assert actual == expected, f"❌ {field_name} Mismatch! Expected: {expected}, Got: {actual}"
         log.info(f"✅ {expected} | {field_name} is correctly displayed.")
+
+    @staticmethod
+    def assert_burger_menu_visible(home_page, log):
+        assert home_page.is_burger_menu_visible(), "❌ Burger menu not visible!"
+        log.info("✅ Burger menu is visible.")
+
+    @staticmethod
+    def assert_text_equals(actual, expected, field_label, log):
+        assert actual == expected, f"❌ {field_label} Mismatch! Expected: '{expected}', but got: '{actual}'"
+        log.info(f"✅ Correct {field_label} displayed: {actual}")
+
+    @staticmethod
+    def assert_placeholder(actual, expected, field_label, log):
+        assert actual == expected, f"❌ {field_label} placeholder is incorrect! Expected: '{expected}', Got: '{actual}'"
+        log.info(f"✅ {field_label} placeholder is correct: '{actual}'")
+
+    @staticmethod
+    def assert_image_is_loaded(driver, image_element, log, label="Product image"):
+        assert image_element.is_displayed(), f"❌ {label} is not visible on the page."
+
+        is_loaded = driver.execute_script(
+            "return arguments[0].complete && arguments[0].naturalWidth > 0", image_element
+        )
+        assert is_loaded, f"❌ {label} failed to load: {image_element.get_attribute('src')}"
+        log.info(f"✅ {label} loaded successfully: {image_element.get_attribute('alt')}")
+
+    @staticmethod
+    def assert_list_sorted(actual_list, expected_list, sort_label, log):
+        assert actual_list == expected_list, f"❌ {sort_label} sorting failed! Got: {actual_list}"
+        log.info(f"✅ {sort_label} sorting is correct.")
+

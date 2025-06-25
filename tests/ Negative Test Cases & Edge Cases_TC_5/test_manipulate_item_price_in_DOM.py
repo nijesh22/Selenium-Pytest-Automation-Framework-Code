@@ -31,6 +31,8 @@ class TestManipulateItemPriceInDOM(BaseTest):
         checkout_overview_page = CheckOutOverview(self.driver, wait)
         price = checkout_overview_page.get_overview_product_price()
 
-        assert price == '$29.99', f"❌ Price Mismatch After DOM Manipulation! Expected: {price}"
+        expected_price = '$29.99'
+
+        assert price == expected_price, f"❌ Price Mismatch After DOM Manipulation! Expected: {price}"
         log.info(f"✅ {price} Price correctly displayed.")
 

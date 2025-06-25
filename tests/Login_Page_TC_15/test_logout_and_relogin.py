@@ -13,10 +13,8 @@ class TestLogoutAndReLogin(BaseTest):
         home_page = HomePage(self.driver, wait)
         home_page.verify_url("https://www.saucedemo.com/inventory.html", "URL")
 
-        #Logout
         home_page.open_menu_and_logout()
 
-        #Relogin
         self.login_to_saucedemo(self.driver)
         home_page.verify_url("https://www.saucedemo.com/inventory.html", "URL")
 

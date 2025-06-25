@@ -36,7 +36,6 @@ class TestLoginWithBlankInputs:
         errormessage = login_page.login_error_message()
         error_text = errormessage.text
 
-        # Assertion
         assert error_text == expected_error, f"❌ Expected: '{expected_error}', but got: '{error_text}'"
         log.info(f"✅ Correct error message displayed: {error_text}")
 

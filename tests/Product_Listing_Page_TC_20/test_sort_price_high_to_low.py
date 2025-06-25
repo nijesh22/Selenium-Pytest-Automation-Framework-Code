@@ -18,5 +18,7 @@ class TestSortByPriceHighToLow(BaseTest):
 
         expected_sorted_prices = sorted(ui_prices , reverse= True)
 
-        assert ui_prices == expected_sorted_prices, f"❌ Prices not sorted high to low. Got: {ui_prices}"
-        log.info("✅ Product prices are sorted high to low correctly.")
+        Utils.assert_list_sorted(ui_prices, expected_sorted_prices, "Product price high to low", log)
+
+
+

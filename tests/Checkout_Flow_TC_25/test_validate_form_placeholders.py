@@ -26,8 +26,6 @@ class TestValidateFormPlaceholders(BaseTest):
 
         checkout_page = CheckoutPage(self.driver, wait)
 
-        assert checkout_page.get_first_name_placeholder() == "First Name", "❌ First Name placeholder is incorrect"
-        assert checkout_page.get_last_name_placeholder() == "Last Name", "❌ Last Name placeholder is incorrect"
-        assert checkout_page.get_postal_code_placeholder() == "Zip/Postal Code", "❌ Postal Code placeholder is incorrect"
-
-        log.info("✅ All placeholder texts are correctly displayed")
+        Utils.assert_placeholder(checkout_page.get_first_name_placeholder(), "First Name", "First Name", log)
+        Utils.assert_placeholder(checkout_page.get_last_name_placeholder(), "Last Name", "Last Name", log)
+        Utils.assert_placeholder(checkout_page.get_postal_code_placeholder(), "Zip/Postal Code", "Postal Code", log)

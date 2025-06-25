@@ -22,6 +22,6 @@ class TestAddToCartRapidly(BaseTest):
             try:
                 home_page.remove_backpack_from_cart()
             except:
-                log.error(f"⚠️ Remove button not found in round {i}")
+                log.error(f" Remove button not found in round {i}")
 
             home_page.verify_url("https://www.saucedemo.com/inventory.html", "URL")

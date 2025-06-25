@@ -1,6 +1,7 @@
 import time
 import pytest
 from Pages.HomePage import HomePage
+from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
@@ -8,7 +9,7 @@ from tests.BaseTest import BaseTest
 @pytest.mark.usefixtures("setup")
 class TestValidateResponsiveLayout(BaseTest):
     def test_validate_responsive_layout(self):
-
+        log = Utils.customlogger()
         wait = self.login_to_saucedemo(self.driver)
 
         home_page = HomePage(self.driver, wait)
@@ -17,20 +18,20 @@ class TestValidateResponsiveLayout(BaseTest):
         home_page.resize_window(375, 667)
         time.sleep(1)
 
-        assert home_page.is_burger_menu_visible(), "❌ Burger menu not visible!"
+        Utils.assert_burger_menu_visible(home_page, log)
 
         home_page.open_and_close_side_menu()
 
         # Resize to desktop
         home_page.resize_window(1366, 768)
         time.sleep(1)
-        assert home_page.is_burger_menu_visible(), "❌ Burger menu not visible!"
+        Utils.assert_burger_menu_visible(home_page, log)
 
         home_page.open_and_close_side_menu()
 
         # Resize to tablet
         self.driver.set_window_size(768, 1024)
         time.sleep(1)
-        assert home_page.is_burger_menu_visible(), "❌ Burger menu not visible!"
+        Utils.assert_burger_menu_visible(home_page, log)
 
         home_page.open_and_close_side_menu()

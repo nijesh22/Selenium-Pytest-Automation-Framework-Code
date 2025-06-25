@@ -17,5 +17,5 @@ class TestSortByName(BaseTest):
         ui_product_names = home_page.get_product_names()
         sorted_names = sorted(ui_product_names)
 
-        assert ui_product_names == sorted_names, f"❌ Names not sorted A-Z. Got: {ui_product_names}"
-        log.info("✅ Product names are sorted A-Z correctly.")
+        Utils.assert_list_sorted(ui_product_names, sorted_names, "Product Name A-Z", log)
+

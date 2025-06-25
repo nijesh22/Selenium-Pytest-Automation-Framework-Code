@@ -15,7 +15,7 @@ class TestSortByName(BaseTest):
         home_page = HomePage(self.driver, wait)
         home_page.select_sort_option("Name (Z to A)")
         ui_product_names = home_page.get_product_names()
-        sorted_desc = sorted(ui_product_names, reverse=True)
+        sorted_name = sorted(ui_product_names, reverse=True)
 
-        assert ui_product_names == sorted_desc, f"❌ Names not sorted Z-A. Got: {ui_product_names}"
-        log.info("✅ Product names are sorted Z-A correctly.")
+        Utils.assert_list_sorted(ui_product_names, sorted_name, "Product Name Z-A", log)
+

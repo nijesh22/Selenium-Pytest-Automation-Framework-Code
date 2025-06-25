@@ -56,7 +56,6 @@ class TestFirstLastPostalCodeErrorMessage(BaseTest):
         error_name = checkout_page.fname_lname_zipcode_error_message()
         error_text = error_name.text
 
-        # Assertion
         assert error_text == expected_error, f"❌ Expected: '{expected_error}', but got: '{error_text}'"
         log.info(f"✅ Correct error message displayed: {error_text}")
 

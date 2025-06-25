@@ -24,12 +24,7 @@ class TestProductDetailsImages(BaseTest):
             time.sleep(1)
 
             for img in images:
-                assert img.is_displayed(), f"❌ Image not visible for product."
 
-                is_loaded = self.driver.execute_script(
-                    "return arguments[0].complete && arguments[0].naturalWidth > 0", img
-                )
-                assert is_loaded, f"❌ Product image failed to load: {img.get_attribute('src')}"
-                log.info(f"✅ Image loaded correctly: {img.get_attribute('alt')}")
+                Utils.assert_image_is_loaded(self.driver, img, log, label="Product image")
 
                 self.driver.back()
