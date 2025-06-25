@@ -26,7 +26,6 @@ class TestProductPriceMatchesListing(BaseTest):
 
             product_price_details_page = product_detail_page.get_product_price()
 
-            assert product_price == product_price_details_page, f"❌ Mismatch! Expected: {product_price}, Got: {product_price_details_page}"
-            log.info(f"✅ {product_price} Both Prices are Correctly Displayed.")
+            Utils.assert_text_match(product_price, product_price_details_page, "Product Price", log)
 
             self.driver.back()

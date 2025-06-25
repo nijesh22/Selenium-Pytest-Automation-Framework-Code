@@ -24,7 +24,6 @@ class TestProductDescriptionMatching(BaseTest):
 
             product_desc_details_page = product_detail_page.get_product_desc_text()
 
-            assert product_desc == product_desc_details_page, f"❌ Mismatch! Expected: {product_desc}, Got: {product_desc_details_page}"
-            log.info(f"✅ {product_desc} ✅ Both description are Correctly Displayed.")
+            Utils.assert_text_match(product_desc, product_desc_details_page, "Product Description", log)
 
             self.driver.back()

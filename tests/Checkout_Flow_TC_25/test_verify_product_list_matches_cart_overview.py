@@ -37,12 +37,9 @@ class TestVerifyProductListMatchesCartOverview(BaseTest):
         desc = checkout_overview_page.get_overview_product_desc()
         price = checkout_overview_page.get_overview_product_price()
 
-        assert product_details_name == name, f"❌ Mismatch! Expected: {product_details_name}, Got: {name}"
-        log.info(f"✅ {name} ✅ name correctly displayed.")
+        Utils.assert_text_match(product_details_name, name, "Product Name", log)
 
-        assert product_details_desc == desc, f"❌ Mismatch! Expected: {product_details_desc}, Got: {desc}"
-        log.info(f"✅ {desc} ✅ desc correctly displayed.")
+        Utils.assert_text_match(product_details_desc, desc, "Product Description", log)
 
-        assert product_details_price == price, f"❌ Mismatch! Expected: {product_details_price}, Got: {price}"
-        log.info(f"✅ {price} ✅ price correctly displayed.")
+        Utils.assert_text_match(product_details_price, price, "Product price", log)
 

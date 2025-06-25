@@ -23,7 +23,6 @@ class TestOpenDetailsEachProduct(BaseTest):
 
             detail_title = product_detail_page.get_product_title()
 
-            assert product_name == detail_title, f"❌ Mismatch! Expected: {product_name}, Got: {detail_title}"
-            log.info(f"✅ {product_name} page opened correctly.")
+            Utils.assert_text_match(product_name, detail_title, "Product Name", log)
 
             self.driver.back()
