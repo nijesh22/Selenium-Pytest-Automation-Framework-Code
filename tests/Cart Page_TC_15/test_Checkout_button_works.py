@@ -1,12 +1,8 @@
 import pytest
-from Pages.CartPage import CartPage
-from Pages.HomePage import HomePage
-from Pages.ProductDetailPage import ProductDetailPage
-from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+##@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestCheckoutButtonWorks(BaseTest):
     def test_checkout_button_works(self,home_page,cart_page,product_details_page):

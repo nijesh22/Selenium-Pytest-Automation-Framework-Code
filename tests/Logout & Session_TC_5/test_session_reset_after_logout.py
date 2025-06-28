@@ -3,7 +3,7 @@ from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestSessionResetAfterLogout(BaseTest):
     def test_session_reset_after_logout(self,home_page,login_page):

@@ -1,4 +1,33 @@
+# IDE
 .idea/
+
+# Virtual envs
+.venv/
+venv/
+ENV/
+env/
+
+# Bytecode
+__pycache__/
+*.pyc
+
+# Pytest cache
 .pytest_cache/
+
+# Logs
 *.log
-*__pycache__
+logs/
+automation.log
+
+# Reports and screenshots
+Reports/
+*.html
+*.png
+
+# Test results
+*.xml
+*.json
+
+# System files
+.DS_Store
+Thumbs.db

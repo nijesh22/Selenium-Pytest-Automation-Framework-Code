@@ -1,12 +1,8 @@
 import pytest
-from Pages.CartPage import CartPage
-from Pages.CheckOutPage import CheckoutPage
-from Pages.FinishPage import FinishPage
-from Pages.HomePage import HomePage
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestBackHomeButtonWorksFinish(BaseTest):
     def test_back_home_button_works_finish(self,home_page,cart_page,checkout_page,finish_page):

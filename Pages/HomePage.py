@@ -98,7 +98,7 @@ class HomePage(BaseDriver):
 
     def get_all_products(self):
         self.wait.until(EC.presence_of_all_elements_located(self._product_items))
-        return self.driver.find_elements(self._product_items)
+        return self.driver.find_elements(*self._product_items)
 
     def get_cart_badge_count(self):
         try:

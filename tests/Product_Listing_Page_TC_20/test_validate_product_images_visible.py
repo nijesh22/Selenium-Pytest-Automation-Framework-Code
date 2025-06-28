@@ -4,7 +4,7 @@ from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestValidateProductNamesVisible(BaseTest):
     def test_Validate_Product_Image_Visible(self,home_page):

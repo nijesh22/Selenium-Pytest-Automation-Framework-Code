@@ -3,7 +3,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from Utilities.utils import Utils
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestLoginWithBlankInputs:
 

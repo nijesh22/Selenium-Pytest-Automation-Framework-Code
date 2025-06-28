@@ -4,7 +4,7 @@ from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestValidateResponsiveLayout(BaseTest):
     def test_validate_responsive_layout(self,home_page):

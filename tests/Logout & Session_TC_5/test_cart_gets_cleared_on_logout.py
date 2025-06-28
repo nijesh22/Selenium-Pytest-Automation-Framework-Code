@@ -4,7 +4,7 @@ from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestCartGetsClearedOnLogout(BaseTest):
     def test_cart_gets_cleared_on_logout(self,home_page):

@@ -1,15 +1,9 @@
 import pytest
-from selenium.webdriver.support.wait import WebDriverWait
-from Pages.CartPage import CartPage
-from Pages.CheckOutPage import CheckoutPage
-from Pages.HomePage import HomePage
-from Pages.LoginPage import LoginPage
-from Pages.ProductDetailPage import ProductDetailPage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestFirstLastPostalCodeErrorMessage(BaseTest):
 

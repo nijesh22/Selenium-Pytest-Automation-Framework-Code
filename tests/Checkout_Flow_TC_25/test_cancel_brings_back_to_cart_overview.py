@@ -1,12 +1,8 @@
 import pytest
-from Pages.CartPage import CartPage
-from Pages.CheckOutOverview import CheckOutOverview
-from Pages.CheckOutPage import CheckoutPage
-from Pages.HomePage import HomePage
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestCancelBringsBackToCartOverview(BaseTest):
     def test_cancel_brings_back_to_cart_overview(self,home_page,cart_page,checkout_page,checkout_overview_page):

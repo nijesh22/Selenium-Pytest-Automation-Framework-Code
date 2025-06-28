@@ -4,7 +4,7 @@ from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestValidateTotalIsCorrectItemTax(BaseTest):
     def test_validate_total_is_correct_item_tax(self,home_page,cart_page,checkout_page,checkout_overview_page):

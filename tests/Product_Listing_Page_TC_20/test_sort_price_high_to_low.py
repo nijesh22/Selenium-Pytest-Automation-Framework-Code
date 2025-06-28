@@ -1,10 +1,9 @@
 import pytest
-from Pages.HomePage import HomePage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestSortByPriceHighToLow(BaseTest):
     def test_sort_price_high_to_low(self,home_page):

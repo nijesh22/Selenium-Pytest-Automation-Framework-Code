@@ -3,7 +3,7 @@ from Pages.ProductDetailPage import ProductDetailPage
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestProductDetailNavigation(BaseTest):
     def test_product_detail_navigation(self,home_page):

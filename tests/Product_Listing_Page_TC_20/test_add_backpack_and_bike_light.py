@@ -3,7 +3,7 @@ from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestAddBackpackAndBikeLight(BaseTest):
     def test_add_backpack_and_bike_light(self,home_page):

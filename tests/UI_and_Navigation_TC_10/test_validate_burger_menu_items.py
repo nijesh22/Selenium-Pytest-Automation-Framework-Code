@@ -2,7 +2,7 @@ import pytest
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestValidateBurgerMenuItems(BaseTest):
     def test_validate_burger_menu_items(self,home_page,login_page):

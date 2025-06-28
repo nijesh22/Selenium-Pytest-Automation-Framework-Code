@@ -1,11 +1,9 @@
 import pytest
-from Pages.CartPage import CartPage
-from Pages.HomePage import HomePage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestRemoveProductFromCart(BaseTest):
     def test_remove_product_from_cart(self,home_page,cart_page):

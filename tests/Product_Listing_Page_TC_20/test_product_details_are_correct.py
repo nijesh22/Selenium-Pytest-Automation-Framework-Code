@@ -2,7 +2,7 @@ import pytest
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestProductDetailsAreCorrect(BaseTest):
     def test_product_details_are_correct(self,home_page):

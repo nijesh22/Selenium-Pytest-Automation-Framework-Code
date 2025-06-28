@@ -1,13 +1,9 @@
 import pytest
-from Pages.CartPage import CartPage
-from Pages.CheckOutPage import CheckoutPage
-from Pages.FinishPage import FinishPage
-from Pages.HomePage import HomePage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestPlaceOrderWithMultipleItemsFinish(BaseTest):
     def test_place_order_with_multiple_items_finish(self,home_page,cart_page,checkout_page,finish_page):

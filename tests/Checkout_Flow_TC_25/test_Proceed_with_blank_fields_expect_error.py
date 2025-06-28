@@ -1,13 +1,10 @@
 import time
 import pytest
-from Pages.CartPage import CartPage
-from Pages.CheckOutPage import CheckoutPage
-from Pages.HomePage import HomePage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestProceedWithBlankFieldsExpectError(BaseTest):
     def test_proceed_with_blank_fields_expect_error(self,home_page,cart_page,checkout_page):

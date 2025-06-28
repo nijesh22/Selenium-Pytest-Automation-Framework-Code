@@ -1,7 +1,7 @@
 import pytest
 from selenium.webdriver.support.ui import WebDriverWait
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestValidLogin:
 

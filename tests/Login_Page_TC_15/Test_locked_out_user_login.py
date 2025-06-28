@@ -2,7 +2,7 @@ import pytest
 from selenium.webdriver.support.wait import WebDriverWait
 from Utilities.utils import Utils
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestLockedOutUserLogin:
     def test_locked_out_user_login(self,login_page):

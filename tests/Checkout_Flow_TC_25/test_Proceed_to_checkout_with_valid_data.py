@@ -1,11 +1,8 @@
 import pytest
-from Pages.CartPage import CartPage
-from Pages.CheckOutPage import CheckoutPage
-from Pages.HomePage import HomePage
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestProceedToCheckoutWithValidData(BaseTest):
     def test_proceed_to_checkout_with_valid_data(self,home_page,cart_page,checkout_page):

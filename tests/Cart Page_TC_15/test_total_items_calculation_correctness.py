@@ -1,14 +1,9 @@
 import pytest
-from selenium.webdriver.support.wait import WebDriverWait
-from Pages.CartPage import CartPage
-from Pages.HomePage import HomePage
-from Pages.LoginPage import LoginPage
-from Pages.ProductDetailPage import ProductDetailPage
 from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestTotalItemsCalculationCorrectness(BaseTest):
     def test_total_items_calculation_correctness(self,home_page,cart_page):

@@ -22,15 +22,23 @@ from Pages.LoginPage import LoginPage
 from Pages.ProductDetailPage import ProductDetailPage
 from Utilities.utils import Utils
 
+
+
 driver = None
 
 @pytest.fixture(autouse=True)
 def setup(request, browser, url):
     global driver
+    headless = request.config.getoption("--headless")
+
     if browser == "chrome":
         chrome_opt = webdriver.ChromeOptions()
         temp_profile_dir = tempfile.mkdtemp()
         chrome_opt.add_argument(f"--user-data-dir={temp_profile_dir}")
+        if headless:
+            chrome_opt.add_argument("--headless=new")
+            chrome_opt.add_argument("--disable-gpu")
+            chrome_opt.add_argument("--window-size=1920,1080")
         prefs = {
             "credentials_enable_service": False,
             "profile.password_manager_enabled": False,
@@ -42,11 +50,21 @@ def setup(request, browser, url):
         service = ChromeService(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=chrome_opt)
     elif browser == "firefox":
-        service = FirefoxService(GeckoDriverManager().install())
-        driver = webdriver.Firefox(service=service)
+        firefox_opt = webdriver.FirefoxOptions()
+        if headless:
+            firefox_opt.add_argument("--headless")
+
+        service = FirefoxService(GeckoDriverManager(version="v0.34.0").install())
+        driver = webdriver.Firefox(service=service, options=firefox_opt)
+
     elif browser == "edge":
+        edge_opt = webdriver.EdgeOptions()
+        if headless:
+            edge_opt.add_argument("--headless=new")
+            edge_opt.add_argument("--disable-gpu")
+            edge_opt.add_argument("--window-size=1920,1080")
         service = EdgeService(EdgeChromiumDriverManager().install())
-        driver = webdriver.Edge(service=service)
+        driver = webdriver.Edge(service=service, options=edge_opt)
 
     driver.get(url)
     driver.maximize_window()
@@ -58,6 +76,7 @@ def setup(request, browser, url):
 def pytest_addoption(parser):
     parser.addoption("--browser")
     parser.addoption("--url")
+    parser.addoption("--headless", action="store_true", help="Run browser in headless mode")
 
 
 @pytest.fixture(scope="class", autouse=True)
@@ -102,10 +121,10 @@ def pytest_runtest_makereport(item):
                             base64_screenshot = base64.b64encode(screenshot_data).decode('utf-8')
 
                         html = f'''<div>
-                            <img src="data:image/png;base64,{base64_screenshot}" 
-                                 alt="Screenshot" 
-                                 style="width:100%; max-width:800px; height:auto; border:1px solid #ddd; border-radius:4px;" 
-                                 onclick="window.open(this.src)" 
+                            <img src="data:image/png;base64,{base64_screenshot}"
+                                 alt="Screenshot"
+                                 style="width:100%; max-width:800px; height:auto; border:1px solid #ddd; border-radius:4px;"
+                                 onclick="window.open(this.src)"
                                  title="Click to open full size" />
                         </div>'''
 
@@ -158,7 +177,4 @@ def product_details_page(driver,wait):
 @pytest.fixture
 def driver(request):
     return request.cls.driver
-
-
-
 

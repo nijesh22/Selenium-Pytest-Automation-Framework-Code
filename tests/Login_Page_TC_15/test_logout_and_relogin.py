@@ -2,7 +2,7 @@ import pytest
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestLogoutAndReLogin(BaseTest):
     def test_logout_and_relogin(self,home_page):

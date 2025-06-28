@@ -3,7 +3,7 @@ from Utilities.utils import Utils
 from tests.BaseTest import BaseTest
 
 
-@pytest.mark.skip(reason="Skipping temporarily – avoids confusion")
+#@pytest.mark.skip(reason="Skipping temporarily – avoids confusion"
 @pytest.mark.usefixtures("setup")
 class TestVerifyProductListMatchesCartOverview(BaseTest):
     def test_verify_product_list_matches_cart_overview(self,home_page,product_details_page,cart_page,checkout_page,checkout_overview_page):
